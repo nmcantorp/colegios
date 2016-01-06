@@ -2,14 +2,33 @@
 
 <!-- SUBHEADER
 ================================================== -->
-<div id="subheader" class="subheadertext" style="padding:50px 0px !Important;">
-	<div class="row">
+<div id="subheader" class="subheadertext login2" style="padding:50px 0px !Important;">
+	<div class="row login2">
 		<div class="twelve columns">
-			<div class="noslide">
-				 <h1>Our Photography Studio</h1>
+			<div class="noslide" style="width: 40%;">
+                <h3>Iniciar Sesion</h3>
+                <form name="login" action="clases/validacion.php" method="post" onSubmit="return valida(this);">
+                    <center>
+                    <div class="login">
+                        <span>Usuario :</span>
+                            <div>
+                                <input name="usuario" type="text"  maxlength="50" />
+                            </div>
+                    </div>
+                    <div class="login">
+                        <span>Clave:</span>
+                            <div>
+                                <input name="password" type="password" maxlength="50"/>
+                            </div>
+                    </div>
+                    </center>
+                    <br>
+                    <input name="ingresar" type="submit" class="medium button" value="Ingresar"/>
+                </form>
+				 <!-- <h1>Our Photography Studio</h1>
 				<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</h3>
 			<div class="minipause"></div><br/>
-			<a href="#" class="clear actbutton">Action Button</a>
+			<a href="#" class="clear actbutton">Action Button</a>-->
 			</div>
 		</div>
 	</div>

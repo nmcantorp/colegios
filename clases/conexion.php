@@ -6,7 +6,7 @@
 class ClassConexion
 {
 	public $host 	= 'localhost';
-	public $nomBD 	= 'sialen';
+	public $nomBD 	= 'sialen5_rh';
 	public $user 	= 'root';
 	public $pass	= '';
 

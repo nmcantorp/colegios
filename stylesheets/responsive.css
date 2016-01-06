@@ -236,6 +236,7 @@ MAX-WITH 480
 	#testimonials {height:260px !important;}
     #testimonials blockquote{height:260px !important;}
 	.noslide h3 {padding:0px;}
+    .noslide {width: 100% !important;}
 	.ca-menu li {width:100%;float:none;}
 	#subheader p {  text-align: center;}
 	p.right {float:none;}
@@ -261,7 +262,7 @@ SUPERFISH
 	#nav-wrap { margin-top: 0;}
 	select.tinynav{    border: 0; background: #000;  color: #fff;  height: 50px;  padding-left: 15px;font-weight:700;font-family: DroidSansRegular;}
 	.row {  min-width: 100%;}
-	.logo {  margin-top: 17px;  margin-bottom: 17px;}
+	.logo {  margin-top: 17px;  margin-bottom: 17px;} 
 }
  
 
@@ -276,4 +277,5 @@ MAX-WIDTH 240
 h1 {font-size:20px;}
 #testimonials {height:250px !Important;}
 .image_carousel {overflow:hidden;}
+form{ width: 100%; }
 }
