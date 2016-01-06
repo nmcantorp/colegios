@@ -23,7 +23,7 @@
                     </div>
                     </center>
                     <br>
-                    <input name="ingresar" type="submit" class="medium button" value="Ingresar"/>
+                    <input name="ingresar" type="submit" class="success button" value="Ingresar"/>
                 </form>
 				 <!-- <h1>Our Photography Studio</h1>
 				<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</h3>
