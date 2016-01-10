@@ -1,20 +1,3 @@
-<?php session_start();
-	require_once('clases/parametes.php');
-	$objParameters = new ClassParameters();
-	$objParameters->get_Parameters();
-
-    $archivo_actual = basename($_SERVER['PHP_SELF']);
-
-    $captcha_publickey = captcha_publickey;
-	$captcha_privatekey = captcha_privatekey;
-    $error_captcha=null;
-    
-    // seconds, minutes, hours, days
-    $expires = 60*60*24*14;
-    header("Pragma: public");
-    header("Cache-Control: maxage=".$expires);
-    header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$expires) . ' GMT');
- ?>
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -60,7 +43,7 @@
 ================================================== -->
 
 <div class="row">
-	<div class="headerlogo four columns" style="margin: 0 auto; float: none;">
+	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
 			<h4>Studio Francesca</h4>
@@ -68,7 +51,7 @@
 		</div>
 	</div>
 	<div class="headermenu eight columns noleftmarg">
-		<!-- <nav id="nav-wrap">
+		<nav id="nav-wrap">
 		<ul id="main-menu" class="nav-bar sf-menu">
 			<li class="current">
 			<a href="index.html">Home</a>
@@ -113,7 +96,7 @@
 			<a href="contact.html">Contact</a>
 			</li>
 		</ul>
-		</nav>-->
+		</nav>
 	</div>
 </div>
 <div class="clear">
