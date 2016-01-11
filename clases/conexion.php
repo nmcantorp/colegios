@@ -15,6 +15,11 @@ class ClassConexion
 	public $pass	= 's14l3n2013';*/
 	
 	public $conexion; public $total_consultas;
+    
+    function __construct()
+	{
+		$this->MySQL();
+	}
 
 	public function MySQL(){ 
 		if(!isset($this->conexion)){
@@ -24,13 +29,26 @@ class ClassConexion
 	}
 
 	public function consulta($consulta){
+        $resultado_final = array();
 		$this->total_consultas++; 
 		$resultado = mysql_query($consulta,$this->conexion);
 		if(!$resultado){ 
 			echo 'MySQL Error: ' . mysql_error();
 			exit;
 		}
-		return $resultado;
+        if($this->num_rows($resultado)>0){ $conteo=0;
+            while($resultados = $this->fetch_array($resultado)){
+                foreach($resultados as $key => $value)
+                {
+                    if(!is_numeric($key))
+                    {
+                        $resultado_final[$conteo][$key]=$value;
+                    }                    
+                } 
+                $conteo++;              
+               }           
+        }
+		return $resultado_final;
 	}
 
 	public function fetch_array($consulta){

@@ -34,12 +34,10 @@ class ClassParameters extends ClassConexion
 
 		$consulta = $db->consulta($query);
 		
-		if($db->num_rows($consulta)>0){ $conteo=0;
-		  while($resultados = $db->fetch_array($consulta)){ 
-		  	define($resultados['parameter_key'], $resultados['parameter_value'], true);
-		 }
-
-		}
+        for($i=0; $i<count($consulta);$i++)
+        {
+           define($consulta[$i]['parameter_key'], $consulta[$i]['parameter_value'], true); 
+        }
 	}
 
 }

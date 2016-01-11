@@ -1,6 +1,6 @@
 <?php session_start();
-require_once('../comunes/up_pages_inter.php');
-require_once('../class/users.php');
+require_once('../comunes/header_int.php');
+require_once('../clases/users.php');
 //require_once('../class/modal.php');
 /*Clases*/
 $obj_user = new ClassUser();

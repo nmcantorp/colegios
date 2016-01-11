@@ -1,3 +1,46 @@
+<?php session_start();
+    /**
+    *   Llamados a las clases
+    */
+    require_once('../clases/parametes.php'); 
+    require_once('../clases/paginator.php');    
+    /**
+    *   Llamados a los objetos
+    */
+    
+	$objParameters = new ClassParameters();    
+    /**
+    *   Llamados a los metodos
+    */
+
+    $nombre = $_SESSION['nombre'];
+    $foto   = $_SESSION['foto'];
+    switch ($_SESSION['perfil']) {
+    	case 'Administrador':
+    		$perfil = 1;
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
+    
+	$objParameters->get_Parameters();
+
+    $archivo_actual = basename($_SERVER['PHP_SELF']);
+
+    $captcha_publickey = captcha_publickey;
+	$captcha_privatekey = captcha_privatekey;
+    $error_captcha=null;
+    
+    // seconds, minutes, hours, days
+    $expires = 60*60*24*14;
+    header("Pragma: public");
+    header("Cache-Control: maxage=".$expires);
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$expires) . ' GMT');
+    
+    
+ ?>
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -10,14 +53,13 @@
 <meta charset="utf-8"/>
 <!-- Set the viewport width to device width for mobile -->
 <meta name="viewport" content="width=device-width"/>
-<title>Studio Francesca - Premium Theme by WowThemes.net</title>
+<title>Studio Francesca - Premium Theme by WowThemesNet</title>
 <!-- CSS Files-->
-<link rel="stylesheet" href="stylesheets/style.css">
+<link rel="stylesheet" href="../stylesheets/style.css">
 
-<link rel="stylesheet" href="stylesheets/skins/blue.css">
+<link rel="stylesheet" href="../stylesheets/skins/blue.css">
 <!-- skin color -->
-<link rel="stylesheet" href="stylesheets/responsive.css">
-<link rel="stylesheet" href="stylesheets/sialen.css">
+<link rel="stylesheet" href="../stylesheets/responsive.css">
 <!-- IE Fix for HTML5 Tags -->
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -41,7 +83,6 @@
 </p>
 <!-- HEADER
 ================================================== -->
-
 <div class="row">
 	<div class="headerlogo four columns">
 		<div class="logo">
@@ -50,54 +91,9 @@
 			</a>
 		</div>
 	</div>
-	<div class="headermenu eight columns noleftmarg">
-		<nav id="nav-wrap">
-		<ul id="main-menu" class="nav-bar sf-menu">
-			<li class="current">
-			<a href="index.html">Home</a>
-			<ul>
-				<li><a href="index2.html">Without slider</a></li>
-			</ul>
-			</li>
-			<li>
-			<a href="#">Portofolio</a>
-			<ul>
-				<li><a href="portofolio2.html">2 Columns</a></li>
-				<li><a href="portofolio3.html">3 Columns</a></li>
-				<li><a href="portofolio4.html">4 Columns</a></li>
-				<li><a href="portofoliodetail.html">Project Details</a></li>
-			</ul>
-			</li>
-			<li>
-			<a href="#">Blog</a>
-			<ul>
-				<li><a href="blogpage1.html">Blog page style 1</a></li>
-				<li><a href="blogpage2.html">Blog page style 2</a></li>
-				<li><a href="blogpage3.html">Blog page style 3</a></li>
-				<li><a href="blogsinglepost.html">Single post</a></li>
-			</ul>
-			</li>
-			<li>
-			<a href="#">Pages</a>
-			<ul>
-				<li><a href="about.html">About us</a></li>
-				<li><a href="services.html">Services</a></li>
-			</ul>
-			</li>
-			<li>
-			<a href="#">Features</a>
-			<ul>
-				<li><a href="columns.html">Columns</a></li>
-				<li><a href="elements.html">Elements</a></li>
-				<li><a href="typography.html">Typography</a></li>
-			</ul>
-			</li>
-			<li>
-			<a href="contact.html">Contact</a>
-			</li>
-		</ul>
-		</nav>
-	</div>
+    
+    <?php require_once('menu.php'); ?>    
+    <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
 </div>
 <div class="clear">
 </div>

@@ -1,4 +1,34 @@
-<?php require('pages/commons/header.php'); ?>
+<?php require_once('pages/commons/header.php'); 
+
+if( $_REQUEST['ac']=='login' )
+{
+    require_once('clases/usuario.php');
+    $objUsuario = new ClassUsuario();
+    $resultado = $objUsuario->valida_usuario($_REQUEST['usuario'],$_REQUEST['password']);
+    
+    if(count($resultado))
+    {
+        for($i=0; $i<count($resultado);$i++)
+        {
+            $_SESSION['nombre']     = ucfirst($resultado[$i]['nombre'])." ".ucfirst($resultado[$i]['apellido']);
+            $_SESSION['perfil']     = $resultado[$i]['perfil'];
+            $_SESSION['id_usuario'] = $resultado[$i]['id_usuario']; 
+
+            if(file_exists('images/perfil/'.$resultado[$i]['foto']))
+            {
+                $_SESSION['foto'] = 'images/perfil/'.$resultado[$i]['foto'];
+                
+            }else{
+                $_SESSION['foto'] = false;
+            }
+            $ingreso = true;
+        } 
+          
+        header("Location: pages/");
+    }
+}
+    unset($_SESSION);
+?>
 
 <!-- SUBHEADER
 ================================================== -->
@@ -7,7 +37,7 @@
 		<div class="twelve columns">
 			<div class="noslide" style="width: 40%;">
                 <h3>Iniciar Sesion</h3>
-                <form name="login" action="clases/validacion.php" method="post" onSubmit="return valida(this);">
+                <form name="login" action="?ac=login" method="post" onSubmit="return valida(this);">
                     <center>
                     <div class="login">
                         <span>Usuario :</span>

@@ -43,21 +43,10 @@ class ClassMenu extends ClassConexion
 
 		$consulta = $db->consulta($query);
 		
-		if($db->num_rows($consulta)>0){ $conteo=0;
-		  while($resultados = $db->fetch_array($consulta)){ 
-		  	$this->resultado[$conteo]['name_menu']=$resultados['name_menu'];
-		  	$this->resultado[$conteo]['link']=$resultados['link'];
-		  	$this->resultado[$conteo]['parent']=$resultados['parent'];
-		  	$this->resultado[$conteo]['id_menu']=$resultados['id_menu'];
-		  	$this->resultado[$conteo]['orden']=$resultados['orden'];
-		  	$this->resultado[$conteo]['id_profile']=$resultados['id_profile'];
-		   	$conteo++;
-		 }
-		   return $this->resultado;
-		}
+	   	return $consulta;
 	}
 
-	function get_sub($data){
+	function get_sub($data, $id_menu){
 		$db = new ClassConexion();
 		$db->MySQL();
 
@@ -74,7 +63,7 @@ class ClassMenu extends ClassConexion
 			where
 			menu_x_profiles.id_profile = $data
 			AND
-			menu.parent >  '0'
+			menu.parent =  '$id_menu'
 			AND
 			menu.status = '1'
 			GROUP BY
@@ -85,19 +74,8 @@ class ClassMenu extends ClassConexion
 			menu.orden ASC";
 			//echo $query;die();
 		$consulta = $db->consulta($query);
-		
-		if($db->num_rows($consulta)>0){ $conteo=0;
-		  while($resultados = $db->fetch_array($consulta)){ 
-		  	$this->resultado[$conteo]['name_menu']=$resultados['name_menu'];
-		  	$this->resultado[$conteo]['link']=$resultados['link'];
-		  	$this->resultado[$conteo]['parent']=$resultados['parent'];
-		  	$this->resultado[$conteo]['id_menu']=$resultados['id_menu'];
-		  	$this->resultado[$conteo]['orden']=$resultados['orden'];
-		  	$this->resultado[$conteo]['id_profile']=$resultados['id_profile'];
-		   	$conteo++;
-		 }
-		   return $this->resultado;
-		}
+
+	   	return $consulta;
 	}
 
 }

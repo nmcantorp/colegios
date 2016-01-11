@@ -1,6 +1,13 @@
 $(function(){
+    var foto = $('#foto_temp').val();
     
+    if(foto)
+    {   
+        $('#main-menu > li > a > img').attr('src', '../'+foto);
+    }
 });
+
+// Funciones para el logueo 
 
 function vacio(q) {
     for ( i = 0; i < q.length; i++ ) {
@@ -27,3 +34,5 @@ function valida(F)
         return true
     }
 }
+
+//Final funciones de logueo 
