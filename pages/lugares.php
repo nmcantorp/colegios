@@ -19,123 +19,56 @@
 <!-- ANIMATED COLUMNS 
 ================================================== -->
 <div class="row content">
-
-<div class="row">
+    <div class="row">
     <hr>
     <div class="twelve columns" >
         <h5>Crear Lugares</h5>
-        <form  name="empresas" action="?ac=save" method="post" id="empresas">
+        <form  name="lugares" action="?ac=save" method="post" id="lugares">
             <fieldset>
-                <legend>Organización</legend>
+                <legend>Pa&iacute;s</legend>
                 <div class="row">
                     <div class="four columns">
-                        <label>Nit</label>
-                        <input type="text" class="smoothborder" name="nit" id="nit" required=""/>
+                        <label>C&oacute;digo Pa&iacute;s</label>
+                        <input type="text" class="smoothborder" name="cod_postal" id="cod_postal" required=""/>
                     </div>
                     <div class="eight columns">
-                        <label>Nombre Empresa</label>
-                        <input type="text" class="smoothborder" name="nombre" id="nombre" required=""/>
+                        <label>Nombre Pa&iacute;s</label>
+                        <input type="text" class="smoothborder" name="pais" id="pais" required=""/>
                     </div>
                 </div>
+            </fieldset>
+            <fieldset>
+                <legend>Departamento</legend>
                 <div class="row">
                     <div class="four columns">
-                        <label>Dirección</label>
-                        <input type="text" class="smoothborder" name="direccion" id="direccion" required=""/>
+                        <label>C&oacute;digo Departamento</label>
+                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" required=""/>
                     </div>
-                    <div class="four columns">
-                        <label>Teléfono - PBX</label>
-                        <input type="text" class="smoothborder" name="telefono" id="telefono" required=""/>
-                    </div>
-                    <div class="four columns">
-                        <label>URL</label>
-                        <input type="text" class="smoothborder" name="url" id="url"/>
+                    <div class="eight columns">
+                        <label>Nombre Departamento</label>
+                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
                     </div>
                 </div>
+            </fieldset>
+            <fieldset>
+                <legend>Ciudad</legend>
                 <div class="row">
                     <div class="four columns">
-                        <label>Sigla</label>
-                        <input type="text" class="smoothborder" name="sigla" id="sigla"/>
+                        <label>C&oacute;digo Ciudad</label>
+                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" required=""/>
                     </div>
-                    <div class="four columns">
-                        <label>Año fundacion</label>
-                        <input type="date" class="smoothborder" name="anyo" id="anyo" />
-                    </div>
-                    <div class="four columns">
-                        <label>Tipo de Sede</label>
-                        <select class="form-control" id="tipo" name="tipo">
-                            <option value="PR">Pricipal</option>
-                            <option value="SU">Sucursale</option>
-                        </select>                      
+                    <div class="eight columns">
+                        <label>Nombre Ciudad</label>
+                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="four columns">
-                        <label>Sector Económico</label>
-                        <select class="form-control" name="sector" id="sector">
-                            <option value="" > -Seleccione Sector- </option>
-                            <?php for($i=0; $i<count($sectores); $i++ ): ?>
-                                <option value="<?php echo $sectores[$i]['id_valor_def']; ?>"><?php echo utf8_encode($sectores[$i]['valor_definicion']); ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>                        
-                </div>
-                
-                <div class="row botonera_form">
-                    <a href="javascript:enviar();" class="success button">Guardar</a>
-                    <a href="#" class="alert button">Cancelar</a>
-                </div>
-                 </fieldset>
-        </form>
-                </div>
-
-       
-    </div>
-    
-        <!-- TABLES--
-		<div class="twelve columns" style="text-align: center;">
-			<h5> NUEVA ORGANIZACIÓN</h5>
-            <div class="clear"></div>
-            <div class="row botonera">
-                <a href="#" class="button">Nuevo</a>
-                <a href="#" class="success button">Button</a>
+            </fieldset>
+            <div class="row botonera_form">
+                <a href="javascript:enviar();" class="success button">Guardar</a>
+                <a href="#" class="alert button">Cancelar</a>
             </div>
-			<table style="margin: 0 auto !important;">
-			<thead>
-			<tr>
-				<th>
-					Nit Empresa
-				</th>
-				<th>
-					Nombre Empresa
-				</th>
-				<th>
-					Sector Economico
-				</th>
-				<th>
-					Acciones
-				</th>
-			</tr>
-			</thead>
-			<tbody>
-                <?php for($i=0 ; $i < count($result); $i++ ): ?>
-			<tr>
-				<td>
-					<?php echo $result[$i]['nit_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['nombre_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['valor_definicion']; ?>
-				</td>
-				<td>
-					Content
-				</td>
-			</tr>
-            <?php endfor; ?>
-			</tbody>
-			</table>
-		</div>-->
-	</div>
+        </form>
+    </div>
+    </div>
 </div>
 <?php require_once('commons/footer_int.php'); ?>
