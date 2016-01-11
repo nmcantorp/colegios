@@ -44,7 +44,9 @@ function valida(F)
 function enviar()
 {
     var formularios = document.forms;
+    var conteo_error = 0;
     console.log(formularios);
+
     for (var i = 0; i < formularios.length; i++) {
         id_form = formularios[i].id;
 
@@ -55,14 +57,21 @@ function enviar()
             if(inputs[j].required){
                 if( inputs[j].value=='' || inputs[j].value == null)
                 {
-                    
+                    $("#"+inputs[j].id).attr('style', 'border:1px solid red !important;');
+                    conteo_error++;
+                }else{
+                    $("#"+inputs[j].id).removeAttr('style')
                 }
             }
             console.log(inputs[j].required);
         };
-
-        console.log($('#'+id_form+' :input'));
-        return false;
+        if(conteo_error>0){
+            $('#mensaje_error').css('display', 'block');
+            return false;  
+        }else{
+            $('#mensaje_error').css('display', 'none');
+        } 
+        //console.log($('#'+id_form+' :input'));        
         document.getElementById(id_form).submit();
      }; 
        
