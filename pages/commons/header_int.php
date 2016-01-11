@@ -70,10 +70,10 @@
 ================================================== -->
 <div id="panel">
 	<div class="row">
-		<div class="twelve columns">
-			<img src="../images/sialen.png" class="pics" alt="info">
+        <div class="twelve columns">
+            <img src="../images/sialen.png" width="40" height="40" class="pics" alt="info">
 			<div class="infotext">
-				 "SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.
+                <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
 			</div>
 		</div>
 	</div>
@@ -87,7 +87,7 @@
 	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
-			<h4>SEIP</h4>
+			<img src="../images/logo.png" width="140" height="40" class="pics" alt="info">
 			</a>
 		</div>
 	</div>
@@ -97,3 +97,5 @@
 </div>
 <div class="clear">
 </div>
+</body>
+</html>
