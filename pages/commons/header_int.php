@@ -1,18 +1,17 @@
 <?php session_start();
     /**
     *   Llamados a las clases
-    *
-    require_once('../clases/parametes.php');
+    */
+    require_once('../clases/parametes.php'); 
     require_once('../clases/paginator.php');    
     /**
     *   Llamados a los objetos
-    *
+    */
     
 	$objParameters = new ClassParameters();    
     /**
     *   Llamados a los metodos
     */
-
     $nombre = $_SESSION['nombre'];
     $foto   = $_SESSION['foto'];
     switch ($_SESSION['perfil']) {
@@ -25,13 +24,11 @@
     		break;
     }
     
-	/*$objParameters->get_Parameters();
-
+	$objParameters->get_Parameters();
     $archivo_actual = basename($_SERVER['PHP_SELF']);
-
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
-    $error_captcha=null;         */
+    $error_captcha=null;
     
     // seconds, minutes, hours, days
     $expires = 60*60*24*14;
@@ -53,13 +50,16 @@
 <meta charset="utf-8"/>
 <!-- Set the viewport width to device width for mobile -->
 <meta name="viewport" content="width=device-width"/>
-<title>Studio Francesca - Premium Theme by WowThemesNet</title>
+<link type="image/x-icon" href="../images/favicon.ico" rel="icon"/>
+<title>"SEIP" RR.HH</title>
 <!-- CSS Files-->
+<link rel="stylesheet" href="../stylesheets/bootstrap/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" href="../stylesheets/style.css">
 
 <link rel="stylesheet" href="../stylesheets/skins/blue.css">
 <!-- skin color -->
 <link rel="stylesheet" href="../stylesheets/responsive.css">
+<link rel="stylesheet" href="../stylesheets/sialen.css">
 <!-- IE Fix for HTML5 Tags -->
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,10 +70,10 @@
 ================================================== -->
 <div id="panel">
 	<div class="row">
-        <div class="twelve columns">
-            <img src="images/sialen.png" width="40" height="40" class="pics" alt="info">
+		<div class="twelve columns">
+			<img src="../images/sialen.png" class="pics" alt="info">
 			<div class="infotext">
-                <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
+				 "SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.
 			</div>
 		</div>
 	</div>
@@ -83,18 +83,17 @@
 </p>
 <!-- HEADER
 ================================================== -->
-
-<!--<div class="row">
-	<div class="headerlogo four columns" style="margin: 0 auto; float: none;">
+<div class="row">
+	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
-			<h4>Studio Francesca</h4>
+			<h4>SEIP</h4>
 			</a>
 		</div>
 	</div>
-	<div class="headermenu eight columns noleftmarg">
-        
-	</div>
-</div>-->
+    
+    <?php require_once('menu.php'); ?>    
+    <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
+</div>
 <div class="clear">
 </div>
