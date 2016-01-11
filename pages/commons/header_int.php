@@ -53,11 +53,13 @@
 <link type="image/x-icon" href="../images/favicon.ico" rel="icon"/>
 <title>"SEIP" RR.HH</title>
 <!-- CSS Files-->
+<link rel="stylesheet" href="../stylesheets/bootstrap/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" href="../stylesheets/style.css">
 
 <link rel="stylesheet" href="../stylesheets/skins/blue.css">
 <!-- skin color -->
 <link rel="stylesheet" href="../stylesheets/responsive.css">
+<link rel="stylesheet" href="../stylesheets/sialen.css">
 <!-- IE Fix for HTML5 Tags -->
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -85,7 +87,7 @@
 	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
-			<h4>Studio Francesca</h4>
+			<h4>SEIP</h4>
 			</a>
 		</div>
 	</div>
