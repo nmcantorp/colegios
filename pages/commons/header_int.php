@@ -2,7 +2,7 @@
     /**
     *   Llamados a las clases
     */
-    require_once('../clases/parametes.php');
+    require_once('../clases/parametes.php'); 
     require_once('../clases/paginator.php');    
     /**
     *   Llamados a los objetos
@@ -12,7 +12,6 @@
     /**
     *   Llamados a los metodos
     */
-
     $nombre = $_SESSION['nombre'];
     $foto   = $_SESSION['foto'];
     switch ($_SESSION['perfil']) {
@@ -26,9 +25,7 @@
     }
     
 	$objParameters->get_Parameters();
-
     $archivo_actual = basename($_SERVER['PHP_SELF']);
-
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
     $error_captcha=null;
@@ -53,7 +50,8 @@
 <meta charset="utf-8"/>
 <!-- Set the viewport width to device width for mobile -->
 <meta name="viewport" content="width=device-width"/>
-<title>Studio Francesca - Premium Theme by WowThemesNet</title>
+<link type="image/x-icon" href="../images/favicon.ico" rel="icon"/>
+<title>"SEIP" RR.HH</title>
 <!-- CSS Files-->
 <link rel="stylesheet" href="../stylesheets/style.css">
 
@@ -70,10 +68,10 @@
 ================================================== -->
 <div id="panel">
 	<div class="row">
-        <div class="twelve columns">
-            <img src="../images/sialen.png" width="40" height="40" class="pics" alt="info">
+		<div class="twelve columns">
+			<img src="../images/sialen.png" class="pics" alt="info">
 			<div class="infotext">
-                <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
+				 "SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.
 			</div>
 		</div>
 	</div>
@@ -91,11 +89,9 @@
 			</a>
 		</div>
 	</div>
-	<div class="headermenu eight columns noleftmarg">
-		<?php require_once('menu.php'); ?>    
-        <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
-	</div>
+    
+    <?php require_once('menu.php'); ?>    
+    <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
 </div>
-   
 <div class="clear">
 </div>
