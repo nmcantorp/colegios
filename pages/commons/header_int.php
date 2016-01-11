@@ -1,12 +1,12 @@
 <?php session_start();
     /**
     *   Llamados a las clases
-    */
-    require_once('../clases/parametes.php'); 
+    *
+    require_once('../clases/parametes.php');
     require_once('../clases/paginator.php');    
     /**
     *   Llamados a los objetos
-    */
+    *
     
 	$objParameters = new ClassParameters();    
     /**
@@ -25,13 +25,13 @@
     		break;
     }
     
-	$objParameters->get_Parameters();
+	/*$objParameters->get_Parameters();
 
     $archivo_actual = basename($_SERVER['PHP_SELF']);
 
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
-    $error_captcha=null;
+    $error_captcha=null;         */
     
     // seconds, minutes, hours, days
     $expires = 60*60*24*14;
