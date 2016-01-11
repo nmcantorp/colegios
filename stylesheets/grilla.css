@@ -1,0 +1,141 @@
+body
+	{ 
+	font: 0.8em Arial; 
+	}
+h1
+	{ 
+	color: #CC0000;
+	}
+/* Datagrid PHP */
+table.tbl 
+	{ 
+	width: 100%; 
+	border: 2px solid #888888;
+	font-size: 0.9em;
+	clear: both;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+	}
+td.tbl-header 
+	{ 
+	background: url(/images/head_bg.gif); 
+	text-align: center; padding: 3px; 
+	font-weight: bold; 
+	border-bottom: 2px solid #888888;
+	}
+tr.tbl-footer 
+	{color:red; 
+	text-decoration:none;
+	}
+table.tbl-footer 
+	{ 
+	font-size: 1em; 
+	}
+tr.tbl-row 
+	{}
+tr.tbl-row:hover
+	{
+	background: #3399FF;
+	}
+tr.tbl-row-even 
+	{ 
+	background:#BBBBBB;
+	}
+tr.tbl-row-odd 
+	{
+	background: #FFFFFF;
+	}
+tr.tbl-row-highlight:hover 
+	{
+	background: green; 
+	cursor: pointer; 
+	}
+td.tbl-nav 
+	{
+	background: url(/images/head_bg.gif); 
+	height: 20px; 
+	border-top: 2px solid #888888;
+	color: #4D4D4D;
+	}
+td.tbl-pages 
+	{
+	text-align: center; 
+	}
+td.tbl-row-num
+	{
+	text-align: right; 
+	}
+td.tbl-cell 
+	{
+	text-decoration:none
+	}
+td.tbl-controls 
+	{
+	text-align: center; 
+	text-decoration:none;
+	}
+td.tbl-found 
+	{
+	text-decoration:none
+	}
+td.tbl-checkall 
+	{
+	text-decoration:none
+	}
+td.tbl-page 
+	{
+	text-align: right; 
+	}
+td.tbl-noresults
+	{
+	font-weight: bold; 
+	color: #9F0000;
+	height: 45px; 
+	text-align: center; 
+	text-decoration:none 
+	}
+span.tbl-reset 
+	{ 
+	margin: 5px 5px; 
+	text-decoration:none 
+	}
+img.tbl-reset-image
+	{ 
+	margin-right: 5px;
+	border: 0; 
+	}
+span.tbl-create 
+	{
+	margin: 5px 0;
+	}
+img.tbl-create-image
+	{ 
+	margin-right: 5px; 
+	border: 0; 
+	}
+div.tbl-filter-box
+	{}
+img.tbl-arrows
+	{ 
+	border: 0; 	
+	}
+img.tbl-order-image 
+	{
+	margin: 0 2px;
+	border: 0;
+	}
+img.tbl-filter-image 
+	{
+	border: 0; 
+	}
+img.tbl-control-image
+	{
+	border: 0;
+	}
+span.page-selected 
+	{
+	color: black; 
+	font-weight: bold;
+	}
+input.tbl-checkbox 
+	{}
