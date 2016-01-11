@@ -70,10 +70,10 @@
 ================================================== -->
 <div id="panel">
 	<div class="row">
-		<div class="twelve columns">
-			<img src="http://www.wowthemes.net/demo/studiofrancesca/images/info.png" class="pics" alt="info">
+        <div class="twelve columns">
+            <img src="images/sialen.png" width="40" height="40" class="pics" alt="info">
 			<div class="infotext">
-				 Thank you for visiting my theme! Replace this with your message to visitors.
+                <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
 			</div>
 		</div>
 	</div>
@@ -83,17 +83,18 @@
 </p>
 <!-- HEADER
 ================================================== -->
-<div class="row">
-	<div class="headerlogo four columns">
+
+<!--<div class="row">
+	<div class="headerlogo four columns" style="margin: 0 auto; float: none;">
 		<div class="logo">
 			<a href="index.html">
 			<h4>Studio Francesca</h4>
 			</a>
 		</div>
 	</div>
-    
-    <?php require_once('menu.php'); ?>    
-    <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
-</div>
+	<div class="headermenu eight columns noleftmarg">
+        
+	</div>
+</div>-->
 <div class="clear">
 </div>
