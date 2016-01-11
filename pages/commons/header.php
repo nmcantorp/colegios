@@ -1,5 +1,5 @@
 <?php session_start();
-   /*	require_once('clases/parametes.php');
+   	require_once('clases/parametes.php');
 	$objParameters = new ClassParameters();
 	$objParameters->get_Parameters();
 
@@ -7,7 +7,7 @@
 
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
-    $error_captcha=null;    */ 
+    $error_captcha=null;
     $foto = null;
 
     // seconds, minutes, hours, days

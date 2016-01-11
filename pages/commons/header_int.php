@@ -1,12 +1,12 @@
 <?php session_start();
     /**
     *   Llamados a las clases
-    *
+    */
     require_once('../clases/parametes.php');
     require_once('../clases/paginator.php');    
     /**
     *   Llamados a los objetos
-    *
+    */
     
 	$objParameters = new ClassParameters();    
     /**
@@ -25,13 +25,13 @@
     		break;
     }
     
-	/*$objParameters->get_Parameters();
+	$objParameters->get_Parameters();
 
     $archivo_actual = basename($_SERVER['PHP_SELF']);
 
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
-    $error_captcha=null;         */
+    $error_captcha=null;
     
     // seconds, minutes, hours, days
     $expires = 60*60*24*14;
@@ -71,7 +71,7 @@
 <div id="panel">
 	<div class="row">
         <div class="twelve columns">
-            <img src="images/sialen.png" width="40" height="40" class="pics" alt="info">
+            <img src="../images/sialen.png" width="40" height="40" class="pics" alt="info">
 			<div class="infotext">
                 <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
 			</div>
@@ -83,9 +83,8 @@
 </p>
 <!-- HEADER
 ================================================== -->
-
-<!--<div class="row">
-	<div class="headerlogo four columns" style="margin: 0 auto; float: none;">
+<div class="row">
+	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
 			<h4>Studio Francesca</h4>
@@ -93,8 +92,10 @@
 		</div>
 	</div>
 	<div class="headermenu eight columns noleftmarg">
-        
+		<?php require_once('menu.php'); ?>    
+        <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
 	</div>
-</div>-->
+</div>
+   
 <div class="clear">
 </div>
