@@ -1,14 +1,12 @@
 <?php require_once('commons/header_int.php');
-      require_once('../clases/organizacion.php');
-      require_once('../clases/valor_definicion.php');
-      
-      
-      $obj_organizacion     = new ClassOrganizacion();
-      $obj_valordefinicion  = new ClassValDefinicion();
-      
-      $result   = $obj_organizacion->get_Organizacion();
-      $sectores = $obj_valordefinicion->get_Definiciones('SECTOR_ECONOMICO');
-      
+      require_once('../clases/ciudad.php');
+
+      /*Clases*/
+      $obj_ciudad  = new ClassCiudad();
+
+      /*Metodos*/
+      $resultado_ciudad = $obj_ciudad->get_Ciudades();
+
       if($_REQUEST['ac'] == 'save')
       {
           
@@ -74,34 +72,27 @@
                         <select class="smoothborder" id="ciudad" name="ciudad" required="">
                             <option value=""></option>
                             <?php
-                            require_once('../clases/conexion.php');
-                            $link = conexion();
-                            $sql="SELECT id_ciudad, nombre_ciudad FROM ciudades ORDER BY nombre_ciudad";
-                            $result=mysql_query($sql,$link)or die("Error $sql2");
-                            if ($result)
-                            	while($row = mysql_fetch_array($result))
+                            if ($resultado_ciudad)
+                            	while($row = mysql_fetch_array($resultado_ciudad))
                             		{
                             		echo '<option value="'.$row[id_ciudad].'">'.$row[nombre_ciudad].'</option>';
                             		}
                             ?>
                         </select>
                     </div>
-                    <div class="eight columns">
-                        <label>Nombre Departamento</label>
-                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
-                    </div>
                 </div>
-            </fieldset>
-            <fieldset>
-                <legend>Ciudad</legend>
                 <div class="row">
-                    <div class="four columns">
-                        <label>C&oacute;digo Ciudad</label>
-                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" required=""/>
-                    </div>
                     <div class="eight columns">
-                        <label>Nombre Ciudad</label>
-                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
+                        <label>Email</label>
+                        <input type="text" class="smoothborder" name="email" id="email" maxlength="100" required=""/>
+                    </div>
+                    <div class="two columns">
+                        <label>Telefono</label>
+                        <input type="text" class="smoothborder" name="telefono" id="telefono" maxlength="10" onkeypress="return numero(event);" required=""/>
+                    </div>
+                    <div class="two columns">
+                        <label>Celular</label>
+                        <input type="text" class="smoothborder" name="celular" id="celular" maxlength="10" onkeypress="return numero(event);" required=""/>
                     </div>
                 </div>
             </fieldset>

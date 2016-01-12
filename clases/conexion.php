@@ -1,5 +1,4 @@
 <?php
-
 /**
 * Conexion a la base de datos
 */
@@ -15,16 +14,16 @@ class ClassConexion
 	public $pass	= 's14l3n2013';*/
 	
 	public $conexion; public $total_consultas;
-    
+
     function __construct()
 	{
 		$this->MySQL();
 	}
 
-	public function MySQL(){ 
+	public function MySQL(){
 		if(!isset($this->conexion)){
-			$this->conexion = (mysql_connect($this->host,$this->user,$this->pass)) or die(mysql_error());
-			mysql_select_db($this->nomBD,$this->conexion) or die(mysql_error());
+			$this->conexion = (mysql_connect($this->host,$this->user,$this->pass)) or die("Error al conectarse a la base de datos.");
+			mysql_select_db($this->nomBD,$this->conexion) or die("Error al seleccionar la BD");
 		}
 	}
 
@@ -71,5 +70,4 @@ class ClassConexion
 		return mysql_close();
 	}
 }
-
 ?>
