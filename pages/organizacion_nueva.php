@@ -65,7 +65,7 @@
                         <select class="form-control" id="tipo" name="tipo">
                             <option value="PR">Pricipal</option>
                             <option value="SU">Sucursale</option>
-                        </select>                      
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -77,18 +77,18 @@
                                 <option value="<?php echo $sectores[$i]['id_valor_def']; ?>"><?php echo utf8_encode($sectores[$i]['valor_definicion']); ?></option>
                             <?php endfor; ?>
                         </select>
-                    </div>                        
+                    </div>
                 </div>
                 
                 <div class="row botonera_form">
                     <a href="javascript:enviar();" class="success button">Guardar</a>
                     <a href="#" class="alert button">Cancelar</a>
                 </div>
-        
-                </div>
-            </fieldset>
+                 </fieldset>
         </form>
-       
+                </div>
+
+
     </div>
     
         <!-- TABLES--

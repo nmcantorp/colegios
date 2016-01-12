@@ -29,11 +29,11 @@
                 <div class="row">
                     <div class="four columns">
                         <label>C&oacute;digo Pa&iacute;s</label>
-                        <input type="text" class="smoothborder" name="cod_postal" id="cod_postal" required=""/>
+                        <input type="text" class="smoothborder" name="cod_postal" id="cod_postal" maxlength="8" onkeypress="return numero(event);" required=""/>
                     </div>
                     <div class="eight columns">
                         <label>Nombre Pa&iacute;s</label>
-                        <input type="text" class="smoothborder" name="pais" id="pais" required=""/>
+                        <input type="text" class="smoothborder" name="pais" id="pais" maxlength="100" required=""/>
                     </div>
                 </div>
             </fieldset>
@@ -42,11 +42,11 @@
                 <div class="row">
                     <div class="four columns">
                         <label>C&oacute;digo Departamento</label>
-                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" required=""/>
+                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" maxlength="8" onkeypress="return numero(event);" required=""/>
                     </div>
                     <div class="eight columns">
                         <label>Nombre Departamento</label>
-                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
+                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" maxlength="100" required=""/>
                     </div>
                 </div>
             </fieldset>
@@ -55,11 +55,11 @@
                 <div class="row">
                     <div class="four columns">
                         <label>C&oacute;digo Ciudad</label>
-                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" required=""/>
+                        <input type="text" class="smoothborder" name="cod_dep" id="cod_dep" maxlength="8" onkeypress="return numero(event);" required=""/>
                     </div>
                     <div class="eight columns">
                         <label>Nombre Ciudad</label>
-                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" required=""/>
+                        <input type="text" class="smoothborder" name="nom_depto" id="nom_depto" maxlength="100" required=""/>
                     </div>
                 </div>
             </fieldset>

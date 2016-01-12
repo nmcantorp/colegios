@@ -68,3 +68,30 @@ function enviar()
        
 
 }
+
+// Funciones para la validacion del email
+
+function validar(txt)
+{
+
+    //expresion regular
+        var b=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/
+
+   //comentar la siguiente linea si no se desea que aparezca el alert()
+        alert("" + (b.test(txt)?"":"Verifique su email no es para una ") + "Suscripción válida.")
+
+   //devuelve verdadero si validacion OK, y falso en caso contrario
+        return b.test(txt)
+}
+
+// Funcion para campos numericos
+
+function numero(e)
+{
+    var num = window.event ? window.event.keyCode : e.which;
+    if ( num == 8 ) return true;
+    return /\d/.test(String.fromCharCode(num));
+}
+
+
+
