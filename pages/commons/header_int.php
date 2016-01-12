@@ -54,7 +54,7 @@
 <title>"SEIP" RR.HH</title>
 <!-- CSS Files-->
 <link href="../javascripts/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
-<link rel="stylesheet" href="../stylesheets/bootstrap/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="../stylesheets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../stylesheets/style.css">
 
 <link rel="stylesheet" href="../stylesheets/skins/blue.css">

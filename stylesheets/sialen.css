@@ -28,7 +28,19 @@
 
 .row.botonera_form a{
     position: relative;
-    right: 25%;
+    right: 40%;
     float: right;
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 450px) { 
+    .row.botonera_form a{    
+        right: 30%;        
+    }
+}
+
+@media only screen and (max-width: 340px) { 
+    .row.botonera_form a{    
+        right: 17%;        
+    }
 }
