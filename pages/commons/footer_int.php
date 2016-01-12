@@ -51,6 +51,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="dialog" title="Confirma limpiar">
+	<p></p>
+    <div  style="margin: 3px auto; width: 70%;">
+        <a href="javascript:confirmar_dialog();" class="button" style="margin-bottom: 5px;">Limpiar</a>
+        <a href="javascript:cancelar_dialog();" class="button" style="margin-bottom: 5px;">Cancelar</a>
+    </div>
+
+</div>
 <!-- JAVASCRIPTS 
 ================================================== -->
 <!-- Javascript files placed here for faster loading -->
@@ -66,6 +75,8 @@
 <script src="../javascripts/hoverIntent.js"></script>
 <script src="../javascripts/superfish.js"></script>
 <script src="../javascripts/responsivemenu.js"></script>
+<script src="../javascripts/responsivemenu.js"></script>
+<script src="../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <script src="../javascripts/funciones_propias.js"></script>
 </body>
 </html>

@@ -66,6 +66,7 @@
                     <div class="four columns">
                         <label>Tipo de Sede</label>
                         <select class="form-control" id="tipo" name="tipo" required>
+                            <option value="" > -Seleccione Tipo </option>
                             <option value="PR">Pricipal</option>
                             <option value="SU">Sucursale</option>
                         </select>                      
@@ -85,7 +86,7 @@
                 
                 <div class="row botonera_form">
                     <a href="javascript:enviar();" class="success button">Guardar</a>
-                    <a href="#" class="alert button">Cancelar</a>
+                    <a href="javascript:reset();" class="alert button">Limpiar</a>
                 </div>
         
                 </div>

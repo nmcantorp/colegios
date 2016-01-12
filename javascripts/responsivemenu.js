@@ -9,6 +9,7 @@ $(document).ready(function () {
 	  indent: '- ', // String: Specify text for indenting sub-items
 	  label: '' // String: Sets the <label> text for the <select> (if not set, no label will be added)
 	});
+
  });
  
 // initialise plugins superfish menu
@@ -17,6 +18,7 @@ $(document).ready(function () {
  
                         /* prepend menu icon */
                         jQuery('#nav-wrap').prepend('<div id="menu-icon">MENU</div>');
+                        $("#tinynav2").remove();
                         //alert ('test');
                         /* toggle nav */
                         $("#menu-icon").on("click", function(){

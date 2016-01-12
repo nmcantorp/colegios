@@ -6,6 +6,30 @@ $(function(){
     {   
         $('#main-menu > li > a > img').attr('src', '../'+foto);
     }
+
+    /**
+    * Cargue del dialogo 
+    */
+
+    $(function() {
+        $( "#dialog" ).dialog({
+          autoOpen: false,
+          modal: true,
+          show: {
+          
+            duration: 500
+          },
+          hide: {
+           
+            duration: 500
+          }
+        });
+     
+        $( "#opener" ).click(function() {
+          $( "#dialog" ).dialog( "open" );
+        });
+    });
+
 });
 
 // Funciones para el logueo 
@@ -73,7 +97,41 @@ function enviar()
         } 
         //console.log($('#'+id_form+' :input'));        
         document.getElementById(id_form).submit();
-     }; 
-       
+     };       
 
+}
+
+function reset() {
+    var formularios = document.forms;
+    var conteo_llenos = 0;
+
+    for (var i = 0; i < formularios.length; i++) {
+        id_form = formularios[i].id;
+
+        inputs = $('#'+id_form+' :input');
+
+        for (var j = 0; j < inputs.length; j++) {
+            if( inputs[j].value !='' && inputs[j].value != null)
+            {
+                $("#dialog p").text('Esta seguro que desea limpiar el formulario?')
+                $( "#dialog" ).dialog( "open" );
+            }
+        }
+
+    }
+}
+
+function confirmar_dialog()
+{
+    var formularios = document.forms;
+    for (var i = 0; i < formularios.length; i++) {
+        id_form = formularios[i].id;
+        document.getElementById(id_form).reset();
+    }
+    $( "#dialog" ).dialog( "close" );
+}
+
+function cancelar_dialog()
+{
+    $( "#dialog" ).dialog( "close" );
 }
