@@ -134,7 +134,7 @@ function cancelar_dialog()
 {
     $( "#dialog" ).dialog( "close" );
 }
-}
+
 
 // Funciones para la validacion del email
 
@@ -145,7 +145,7 @@ function validar(txt)
         var b=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/
 
    //comentar la siguiente linea si no se desea que aparezca el alert()
-        alert("" + (b.test(txt)?"":"Verifique su email no es para una ") + "Suscripción válida.")
+        alert("" + (b.test(txt)?"":"Verifique su email no es para una ") + "Suscripciï¿½n vï¿½lida.")
 
    //devuelve verdadero si validacion OK, y falso en caso contrario
         return b.test(txt)
