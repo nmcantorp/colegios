@@ -54,6 +54,7 @@
                     <div class="four columns">
                         <label>Genero</label>
                         <select class="smoothborder" id="genero" name="genero" required="">
+                            <option value=""></option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                         </select>
