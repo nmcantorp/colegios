@@ -94,51 +94,5 @@
 
 
     </div>
-    
-        <!-- TABLES--
-		<div class="twelve columns" style="text-align: center;">
-			<h5> NUEVA ORGANIZACIÓN</h5>
-            <div class="clear"></div>
-            <div class="row botonera">
-                <a href="#" class="button">Nuevo</a>
-                <a href="#" class="success button">Button</a>
-            </div>
-			<table style="margin: 0 auto !important;">
-			<thead>
-			<tr>
-				<th>
-					Nit Empresa
-				</th>
-				<th>
-					Nombre Empresa
-				</th>
-				<th>
-					Sector Economico
-				</th>
-				<th>
-					Acciones
-				</th>
-			</tr>
-			</thead>
-			<tbody>
-                <?php for($i=0 ; $i < count($result); $i++ ): ?>
-			<tr>
-				<td>
-					<?php echo $result[$i]['nit_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['nombre_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['valor_definicion']; ?>
-				</td>
-				<td>
-					Content
-				</td>
-			</tr>
-            <?php endfor; ?>
-			</tbody>
-			</table>
-		</div>-->
 	</div>
 <?php require_once('commons/footer_int.php'); ?>

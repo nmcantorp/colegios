@@ -51,6 +51,13 @@
 		</div>
 	</div>
 </div>
+<div id="dialog" title="Atención">
+    <p></p>
+    <div class="boton_alert botonera_form">
+        <a href="javascript:confirmar_dialog();" class="success button">Aceptar</a>
+        <a href="javascript:cancelar_dialog();" class="alert button">Cancelar</a>
+    </div>
+</div>
 <!-- JAVASCRIPTS 
 ================================================== -->
 <!-- Javascript files placed here for faster loading -->
@@ -66,4 +73,5 @@
 <script src="../javascripts/hoverIntent.js"></script>
 <script src="../javascripts/superfish.js"></script>
 <script src="../javascripts/responsivemenu.js"></script>
+<script src="../javascripts/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 <script src="../javascripts/funciones_propias.js"></script>

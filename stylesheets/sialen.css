@@ -33,6 +33,15 @@
     margin-left: 10px;
 }
 
+.boton_alert{
+    margin-left: 14%;
+    width: 78%;
+}
+
+.boton_alert a{
+    margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 450px) { 
     .row.botonera_form a{    
         right: 30%;        
@@ -42,5 +51,10 @@
 @media only screen and (max-width: 340px) { 
     .row.botonera_form a{    
         right: 17%;        
+    }
+    
+    .boton_alert{
+        margin-left: 25%;
+        width: 50%;
     }
 }
