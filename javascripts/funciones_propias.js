@@ -160,3 +160,16 @@ function numero(e)
     return /\d/.test(String.fromCharCode(num));
 }
 
+//Abre el detalle de la tabla
+function abrir_detalle(e)
+{
+    var datos = e.id; 
+    $("#detalle_"+e.id).toggle();
+
+    if($(".deplega_detalle_"+e.id).text() == '+')
+        $(".deplega_detalle_"+e.id).text('-');
+    else
+        $(".deplega_detalle_"+e.id).text('+');
+
+    console.log($("#detalle_"+e.id));
+}

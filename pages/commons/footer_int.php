@@ -54,8 +54,8 @@
 <div id="dialog" title="Atención">
     <p></p>
     <div class="boton_alert botonera_form">
-        <a href="javascript:confirmar_dialog();" class="success button">Aceptar</a>
-        <a href="javascript:cancelar_dialog();" class="alert button">Cancelar</a>
+        <a href="javascript:confirmar_dialog();" class="button">Aceptar</a>
+        <a href="javascript:cancelar_dialog();" class="button">Cancelar</a>
     </div>
 </div>
 <!-- JAVASCRIPTS 
