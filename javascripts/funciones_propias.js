@@ -173,3 +173,4 @@ function abrir_detalle(e)
 
     console.log($("#detalle_"+e.id));
 }
+

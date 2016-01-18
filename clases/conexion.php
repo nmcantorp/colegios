@@ -26,8 +26,21 @@ class ClassConexion
 			mysql_select_db($this->nomBD,$this->conexion) or die("Error al seleccionar la BD");
 		}
 	}
+    
+    function begin(){
+    	$this->consulta("SET AUTOCOMMIT=0", 'INSERT');
+        $this->consulta("BEGIN", 'INSERT');
+    }
 
-	public function consulta($consulta){
+    function commit(){
+        $this->consulta("COMMIT", 'INSERT');
+    }
+
+    function rollback(){
+        $this->consulta("ROLLBACK", 'INSERT');
+    }
+
+	public function consulta($consulta, $tipo='SELECT'){
         $resultado_final = array();
 		$this->total_consultas++; 
 		$resultado = mysql_query($consulta,$this->conexion);
@@ -35,18 +48,20 @@ class ClassConexion
 			echo 'MySQL Error: ' . mysql_error();
 			exit;
 		}
-        if($this->num_rows($resultado)>0){ $conteo=0;
-            while($resultados = $this->fetch_array($resultado)){
-                foreach($resultados as $key => $value)
-                {
-                    if(!is_numeric($key))
-                    {
-                        $resultado_final[$conteo][$key]=$value;
-                    }                    
-                } 
-                $conteo++;              
-               }           
-        }
+		if($tipo === 'SELECT'){
+	        if($this->num_rows($resultado)>0 ){ $conteo=0;
+	            while($resultados = $this->fetch_array($resultado)){
+	                foreach($resultados as $key => $value)
+	                {
+	                    if(!is_numeric($key))
+	                    {
+	                        $resultado_final[$conteo][$key]=$value;
+	                    }                    
+	                } 
+	                $conteo++;              
+	               }           
+	        }
+	    }
 		return $resultado_final;
 	}
 

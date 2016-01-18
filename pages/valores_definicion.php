@@ -36,7 +36,7 @@ for($i=0; $i<count($result); $i++)
 			<h5>VALORES DEFINICIÓN</h5>
             <div class="clear"></div>
             <div class="row botonera">
-                <a href="organizacion_nueva.php" class="button">Nuevo</a>
+                <a href="valores_definicion_nuevo.php" class="button">Nuevo</a>
                 <a href="#" class="success button">Button</a>
             </div>            
             <table style="margin: 0 auto !important;" width='100%' class="table table-hover">
