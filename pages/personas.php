@@ -6,7 +6,7 @@
 
       /*Metodos*/
       $resultado_ciudad = $obj_ciudad->get_Ciudades();
-
+      print_r($resultado_ciudad);die();
       if($_REQUEST['ac'] == 'save')
       {
           

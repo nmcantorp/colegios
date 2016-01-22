@@ -61,6 +61,8 @@
 <!-- skin color -->
 <link rel="stylesheet" href="../stylesheets/responsive.css">
 <link rel="stylesheet" href="../stylesheets/sialen.css">
+<script src="../javascripts/jquery-1.11.3.js"></script>
+<script src="../javascripts/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 <!-- IE Fix for HTML5 Tags -->
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
