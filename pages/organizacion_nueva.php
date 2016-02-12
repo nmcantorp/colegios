@@ -7,7 +7,8 @@
       $obj_valordefinicion  = new ClassValDefinicion();
       
       $result   = $obj_organizacion->get_Organizacion();
-      $sectores = $obj_valordefinicion->get_Definiciones('SECTOR_ECONOMICO');
+      $sectores = $obj_valordefinicion->get_Definiciones('S','SECTOR_ECONOMICO');
+      //$sectores = $obj_valordefinicion->get_sec_eco();
       
       if($_REQUEST['ac'] == 'save')
       {
@@ -77,8 +78,9 @@
                         <label>Sector Económico</label>
                         <select class="form-control" name="sector" id="sector" required>
                             <option value="" > -Seleccione Sector- </option>
+                           
                             <?php for($i=0; $i<count($sectores); $i++ ): ?>
-                                <option value="<?php echo $sectores[$i]['id_valor_def']; ?>"><?php echo utf8_encode($sectores[$i]['valor_definicion']); ?></option>
+                                <option value="<?php echo $sectores[$i]['id_valor_def']; ?>"><?php echo ($sectores[$i]['valor_definicion']); ?></option>
                             <?php endfor; ?>
                         </select>
                     </div>

@@ -98,6 +98,7 @@ class ClassValDefinicion extends ClassConexion
             return true;
         }
     }
+    
 }
 
 
