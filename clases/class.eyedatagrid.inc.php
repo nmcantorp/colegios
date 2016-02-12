@@ -83,7 +83,7 @@ class EyeDataGrid
 		$this->_db = $_db;
 
 		if (empty($image_path))
-		   $this->image_path = 'images/grilla/';
+		   $this->image_path = '../images/grilla/';
 		else
 			$this->image_path = $image_path;
 
@@ -551,7 +551,7 @@ class EyeDataGrid
 		if (count($this->controls) > 0)
 		{
 			$this->column_count++;
-			echo '<td class="tbl-header">&nbsp;</td>';
+			echo '<td class="tbl-header">Opciones</td>';
 		}
 
 		echo '</tr></thead>';
@@ -572,12 +572,12 @@ class EyeDataGrid
 
 		$pages = ceil($this->row_count / $this->results_per_page); // Total number of pages
 
-		echo '<tfoot><tr class="tbl-footer"><td class="tbl-nav" colspan="' . $this->column_count . '"><table width="100%" class="tbl-footer"><tr><td width="33%" class="tbl-found"><em>' . $this->row_count . '</em> Resultados';
+		echo '<tfoot><tr class="tbl-footer"><td class="tbl-nav" colspan="' . $this->column_count . '"><table width="100%" class="tbl-footer"><tr><td width="50%" class="tbl-found"><em>' . $this->row_count . '</em> Resultados';
 
 		if ($this->row_count > 0)
 			echo ', Mostrando <em>' . $first . '</em> a <em>' . $last . '</em>';
 
-		echo '</td><td wdith="33%" class="tbl-pages">';
+		echo '</td><td wdith="20%" class="tbl-pages">';
 
 		// Handle results that span multiple pages
 		if ($this->row_count > $this->results_per_page)
@@ -611,7 +611,7 @@ class EyeDataGrid
 				echo '<img src="' . $this->image_path . 'arrow_right_disabled.gif" class="tbl-arrows" alt="&gt;" title="Proxima Pagina"><img src="' . $this->image_path . 'arrow_last_disabled.gif" class="tbl-arrows" alt="&gt;&gt;" title="Ultima Page">';
 		}
 
-		echo '</td><td width="33%" class="tbl-page">';
+		echo '</td><td width="30%" class="tbl-page">';
 
 		// Only show page section if we have more than one page
 		if ($pages > 0)
@@ -727,7 +727,7 @@ class EyeDataGrid
 		if ($this->reset_button)
 			echo '<span class="tbl-reset"><a href="javascript:;" onclick="tblReset()" title="' . $this->reset_button .'"><img src="' . $this->image_path . $this->img_reset . '" class="tbl-reset-image">' . $this->reset_button .'</a></span>';
 
-		echo '<table class="tbl">';
+		echo '<table class="tbl" width="100%">';
 
 		$this->buildHeader();
 

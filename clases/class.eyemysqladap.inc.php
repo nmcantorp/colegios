@@ -19,10 +19,10 @@ class EyeMySQLAdap
 
 	public function __construct($host, $user, $password, $db, $persistant = true, $connect_now = true)
 	{
-		$this->host = 'localhost'; // Host
-		$this->user = 'sialen5_adminrh';	// User
-		$this->pass = 'sialenplmnko0';	// Password
-		$this->db_name = 'sialen5_rh';	// Database
+		$this->host = $host; // Host
+		$this->user =  $user;	// User
+		$this->pass = $password;	// Password
+		$this->db_name = $db;	// Database
 
 		if ($connect_now)
 			$this->connect($persistant);
@@ -81,7 +81,7 @@ class EyeMySQLAdap
 * @ Param array $ array los valores en 3D de campos y valores que se actualizan
 * @ Param cadena de la tabla $ tabla para actualizar
 * @ Param string $ en caso de enfermedad
-* @ Param string $ límite de condición límite
+* @ Param string $ lï¿½mite de condiciï¿½n lï¿½mite
 * @ Return valor booleano
 	 */
 	public function update(array $values, $table, $where = false, $limit = false)
@@ -192,7 +192,7 @@ class EyeMySQLAdap
 *
 * @ Param string $ tabla para eliminar la tabla de
 * @ Param string $ en caso de enfermedad
-* @ Param string $ límite de condición límite
+* @ Param string $ lï¿½mite de condiciï¿½n lï¿½mite
 * @ Return valor booleano
 	 */
 	public function delete($table, $where = false, $limit = 1)
@@ -319,7 +319,7 @@ class EyeMySQLAdap
 	}
 
 	/**
-	 * Recoge el id del último registro insertado de la última consulta
+	 * Recoge el id del ï¿½ltimo registro insertado de la ï¿½ltima consulta
 *
 * @ Return int Insertado en
 	 */
@@ -329,7 +329,7 @@ class EyeMySQLAdap
 	}
 
 	/**
-	 *Obtener el número de filas afectadas de la última consulta
+	 *Obtener el nï¿½mero de filas afectadas de la ï¿½ltima consulta
 *
 * @ Int retorno de filas afectadas
 	 */
@@ -349,7 +349,7 @@ class EyeMySQLAdap
 	}
 
 	/**
-	 * Volcado de información a la página de MySQL
+	 * Volcado de informaciï¿½n a la pï¿½gina de MySQL
 *
 * @ Return void
 	 */

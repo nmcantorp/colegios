@@ -1,16 +1,25 @@
 <?php require_once('commons/header_int.php');
       require_once('../clases/ciudad.php');
+      require_once('../clases/personas.php');
 
       /*Clases*/
       $obj_ciudad  = new ClassCiudad();
+      $obj_Persona = new ClassPersonas();
 
       /*Metodos*/
       $resultado_ciudad = $obj_ciudad->get_Ciudades();
+      $readonly = null;
 
       if($_REQUEST['ac'] == 'save')
       {
           
+      }elseif( !empty($_REQUEST['id']) )
+      {
+          $info_persona = $obj_Persona->get_Persona_id($_REQUEST['id']);
+          $readonly = 'readonly';
+          $disabled = 'disabled';
       }
+      
       
 ?>
 
@@ -29,36 +38,36 @@
                 <div class="row">
                     <div class="three columns">
                         <label>Primer Nombre</label>
-                        <input type="text" class="smoothborder" name="primer_nom" id="primer_nom" maxlength="20" required=""/>
+                        <input type="text" class="smoothborder" name="primer_nom" id="primer_nom" maxlength="20" required="" value="<?php echo $info_persona[0]['primer_nom']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="three columns">
                         <label>Segundo Nombre</label>
-                        <input type="text" class="smoothborder" name="segundo_nom" id="segundo_nom" maxlength="20"/>
+                        <input type="text" class="smoothborder" name="segundo_nom" id="segundo_nom" maxlength="20" value="<?php echo $info_persona[0]['segundo_nom']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="three columns">
                         <label>Primer Apellido</label>
-                        <input type="text" class="smoothborder" name="primer_ape" id="primer_ape" maxlength="20" required=""/>
+                        <input type="text" class="smoothborder" name="primer_ape" id="primer_ape" maxlength="20" required="" value="<?php echo $info_persona[0]['primer_ape']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="three columns">
                         <label>Segundo Apellido</label>
-                        <input type="text" class="smoothborder" name="segundo_ape" id="segundo_ape" maxlength="20"/>
+                        <input type="text" class="smoothborder" name="segundo_ape" id="segundo_ape" maxlength="20" value="<?php echo $info_persona[0]['segundo_ape']; ?>" <?php echo $readonly; ?>/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="four columns">
                         <label>Documento Nacional de Identidad (D.N.I)</label>
-                        <input type="text" class="smoothborder" name="doc_identidad" id="doc_identidad" maxlength="15" onkeypress="return numero(event);" required=""/>
+                        <input type="text" class="smoothborder" name="doc_identidad" id="doc_identidad" maxlength="15" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['doc_identidad']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="four columns">
                         <label>Fecha de Nacimiento</label>
-                        <input type="date" class="smoothborder" name="fecha_nac" id="fecha_nac" required=""/>
-                    </div>
+                        <input type="date" class="smoothborder" name="fecha_nac" id="fecha_nac" required="" value="<?php echo $info_persona[0]['fecha_nac']; ?>" <?php echo $readonly; ?>/>
+                    </div> 
                     <div class="four columns">
                         <label>Genero</label>
-                        <select class="smoothborder" id="genero" name="genero" required="">
+                        <select class="smoothborder" id="genero" name="genero" required="" <?php echo $disabled; ?>>
                             <option value=""></option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
+                            <option value="M" <?php echo ($info_persona[0]['genero'] == 'M')?'selected':null; ?>>Masculino</option>
+                            <option value="F" <?php echo ($info_persona[0]['genero'] == 'F')?'selected':null; ?>>Femenino</option>
                         </select>
                     </div>
                 </div>
@@ -68,17 +77,17 @@
                 <div class="row">
                     <div class="eight columns">
                         <label>Direcci&oacute;n de Residencia</label>
-                        <input type="text" class="smoothborder" name="direccion" id="direccion" maxlength="100" required=""/>
+                        <input type="text" class="smoothborder" name="direccion" id="direccion" maxlength="100" required="" value="<?php echo $info_persona[0]['direccion']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="four columns">
                         <label>Ciudad de Residencia</label>
-                        <select class="smoothborder" id="ciudad" name="ciudad" required="">
+                        <select class="smoothborder" id="ciudad" name="ciudad" required="" <?php echo $disabled; ?>>
                             <option value=""></option>
                             <?php
                             if ($resultado_ciudad)
                                 for ($i=0; $i < count($resultado_ciudad); $i++) { 
-                            		echo '<option value="'.$resultado_ciudad[$i]['id_ciudad'].'">'.$resultado_ciudad[$i]['nombre_ciudad'].'</option>';
-                                    # code...
+                                    $selected = ($info_persona[0]['id_ciudad'] == $resultado_ciudad[$i]['id_ciudad'])?'selected':null;
+                            		echo '<option value="'.$resultado_ciudad[$i]['id_ciudad'].'" '. $selected .' >'.$resultado_ciudad[$i]['nombre_ciudad'].'</option>';
                                 }
                             ?>
                         </select>
@@ -87,15 +96,15 @@
                 <div class="row">
                     <div class="eight columns">
                         <label>Email</label>
-                        <input type="text" class="smoothborder" name="email" id="email" maxlength="100" required=""/>
+                        <input type="text" class="smoothborder" name="email" id="email" maxlength="100" required="" value="<?php echo $info_persona[0]['email']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="two columns">
                         <label>Telefono</label>
-                        <input type="text" class="smoothborder" name="telefono" id="telefono" maxlength="10" onkeypress="return numero(event);" required=""/>
+                        <input type="text" class="smoothborder" name="telefono" id="telefono" maxlength="10" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['telefono']; ?>" <?php echo $readonly; ?>/>
                     </div>
                     <div class="two columns">
                         <label>Celular</label>
-                        <input type="text" class="smoothborder" name="celular" id="celular" maxlength="10" onkeypress="return numero(event);" required=""/>
+                        <input type="text" class="smoothborder" name="celular" id="celular" maxlength="10" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['celular']; ?>" <?php echo $readonly; ?>/>
                     </div>
                 </div>
             </fieldset>
@@ -116,8 +125,23 @@
                             <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
                           </div>
                           <div id="tabs-2">
-                            <h2>Content heading 2</h2>
-                            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+                            <h2>Experiencia Laboral</h2>
+                            <p>
+                                <div class="row">
+                                    <div class="eight columns">
+                                        <label>Email</label>
+                                        <input type="text" class="smoothborder" name="email" id="email" maxlength="100" required="" value="<?php echo $info_persona[0]['email']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="two columns">
+                                        <label>Telefono</label>
+                                        <input type="text" class="smoothborder" name="telefono" id="telefono" maxlength="10" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['telefono']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="two columns">
+                                        <label>Celular</label>
+                                        <input type="text" class="smoothborder" name="celular" id="celular" maxlength="10" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['celular']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                </div>
+                            </p>
                           </div>
                           <div id="tabs-3">
                             <h2>Content heading 3</h2>
@@ -141,7 +165,7 @@
             </div>
             <div class="row botonera_form">
                 <a href="javascript:enviar();" class="success button">Guardar</a>
-                <a href="#" class="alert button">Cancelar</a>
+                <a href="javascript:history.back()" class="alert button">Cancelar</a>
             </div>
         </form>
     </div>
