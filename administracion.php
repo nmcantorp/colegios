@@ -77,8 +77,8 @@ if (EyeDataGrid::isAjaxUsed())
 <link href="stylesheets/grilla.css" rel="stylesheet" type="text/css">
 
 </head>
-<!--<body bgcolor="#ffffff">
-<h1>Seguimiento de Gestion.</h1>
+<body bgcolor="#ffffff">
+<!--<h1>Seguimiento de Gestion.</h1>
 <ul>Se&ntilde;or administrador, estos datos son para su verificacion.
     <p></p>
     Al momento de querer ingresar un contacto... Seleccione el icono Nuevo Contacto.
