@@ -55,7 +55,7 @@ class ClassConexion
 	                {
 	                    if(!is_numeric($key))
 	                    {
-	                        $resultado_final[$conteo][$key]=$value;
+	                        $resultado_final[$conteo][$key]=utf8_encode($value);
 	                    }                    
 	                } 
 	                $conteo++;              

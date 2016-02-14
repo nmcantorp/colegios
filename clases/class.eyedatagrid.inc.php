@@ -283,11 +283,11 @@ class EyeDataGrid
 	}
 
 	/**
-	* Agrega un control estándar para una fila
+	* Agrega un control estï¿½ndar para una fila
 *
-* @ Param integer $ type El tipo de control estándar, utilice STDCTRL_ * const
-* @ Param string $ action La acción del control (código onclick o enlace href)
-* @ Param integer $ action_type El tipo de acción, el uso o TYPE_ONCLICK TYPE_HREF
+* @ Param integer $ type El tipo de control estï¿½ndar, utilice STDCTRL_ * const
+* @ Param string $ action La acciï¿½n del control (cï¿½digo onclick o enlace href)
+* @ Param integer $ action_type El tipo de acciï¿½n, el uso o TYPE_ONCLICK TYPE_HREF
 	*/
 	public function addStandardControl($type, $action, $action_type = self::TYPE_ONCLICK)
 	{
@@ -329,10 +329,10 @@ class EyeDataGrid
 	* Agrega un control personalizado a una fila
 *
 * @ Param integer $ type El tipo de control personalizado, utilice CUSCTRL_ * const
-* @ Param string $ action La acción del control (código onclick o enlace href)
-* @ Param integer $ action_type El tipo de acción, el uso o TYPE_ONCLICK TYPE_HREF
-* @ Param string $ texto de la descripción textual del control
-* @ Param string $ image_path La ubicación de la imagen si el tipo es CUSCTRL_IMAGE
+* @ Param string $ action La acciï¿½n del control (cï¿½digo onclick o enlace href)
+* @ Param integer $ action_type El tipo de acciï¿½n, el uso o TYPE_ONCLICK TYPE_HREF
+* @ Param string $ texto de la descripciï¿½n textual del control
+* @ Param string $ image_path La ubicaciï¿½n de la imagen si el tipo es CUSCTRL_IMAGE
 	*/
 	public function addCustomControl($type = self::CUSCTRL_TEXT, $action, $action_type = self::TYPE_ONCLICK, $text, $image_src = '')
 	{
@@ -839,7 +839,7 @@ class EyeDataGrid
 							}
 					}
 
-					echo '<td class="tbl-cell">' . $value . '</td>';
+					echo '<td class="tbl-cell">' . utf8_encode($value) . '</td>';
 				}
 
 				$this->buildControls($row);
@@ -915,7 +915,7 @@ class EyeDataGrid
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">-->
 <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
 </head>
 </html>

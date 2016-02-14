@@ -50,6 +50,93 @@ class ClassPersonas extends ClassConexion
           
         return $consulta;  
     }
+    
+    function getHistoriaLab($idPersona)
+    {
+        $db = new ClassConexion();
+        
+        $query="SELECT
+                organizaciones.nombre_empresa,
+                cargos.descripcion_cargo,
+                historial_laboral.fecha_ingreso,
+                historial_laboral.fecha_retiro,
+                historial_laboral.salario_devengado,
+                historial_laboral.jefe_inmediato,
+                historial_laboral.telcontacto,
+                historial_laboral.extension
+                FROM
+                historial_laboral
+                INNER JOIN organizaciones ON organizaciones.id_organizacion = historial_laboral.id_organizacion
+                INNER JOIN cargos ON cargos.id_cargo = historial_laboral.id_cargo
+                WHERE
+                historial_laboral.id_persona = $idPersona
+                ";
+        $consulta = $db->consulta($query);		
+          
+        return $consulta;
+    }
+    
+    function getEduFormal($idPersona)
+    {
+        $db = new ClassConexion();
+        
+        $query="SELECT
+                valores_definiciones.valor_definicion as 'tipo_formacion',
+                titulos_profesionales.titulo_profesional,
+                estudios_realzados.titulo_obtenido,
+                IFNULL(organizaciones.nombre_empresa,'No aplica') AS institucion,
+                estudios_realzados.anyo_egresado
+                FROM
+                estudios_realzados
+                LEFT OUTER JOIN organizaciones ON organizaciones.id_organizacion = estudios_realzados.id_organizacion
+                LEFT OUTER JOIN titulos_profesionales ON titulos_profesionales.id_titulo_profesional = estudios_realzados.id_titulo_profesional
+                LEFT OUTER JOIN valores_definiciones ON valores_definiciones.id_valor_def = estudios_realzados.id_tipo_formacion
+                WHERE
+                estudios_realzados.id_persona = $idPersona";
+        $consulta = $db->consulta($query);		
+          
+        return $consulta;
+    }
+    
+    function getReferenciaPersonal($idPersona)
+    {
+        $db = new ClassConexion();
+        
+        $query="SELECT
+                referencias_personales.nombre_ref,
+                referencias_personales.telefono_ref,
+                referencias_personales.celular_ref,
+                referencias_personales.direccion_ref,
+                IFNULL(valor2.valor_definicion,'No aplica') as parentesco,
+                IFNULL(valores_definiciones.valor_definicion,'No aplica') as tipo_referencias
+                FROM
+                referencias_personales
+                LEFT OUTER JOIN valores_definiciones ON valores_definiciones.id_valor_def = referencias_personales.tipo_referencia
+                LEFT OUTER JOIN valores_definiciones as valor2 ON valor2.id_valor_def = referencias_personales.id_tipo_parentesco
+                WHERE
+                referencias_personales.id_persona =  $idPersona";
+        $consulta = $db->consulta($query);		
+          
+        return $consulta;
+    }
+    
+    function getFormacionEmpresa($idPersona)
+    {
+        $db = new ClassConexion();
+        
+        $query="SELECT
+                cursos_ofertados.nombre_curso,
+                calificaciones_curso.aprobo_curso
+                FROM
+                cursos_ofertados
+                INNER JOIN matricula_curso_persona ON matricula_curso_persona.id_curso = cursos_ofertados.id_curso
+                LEFT OUTER JOIN calificaciones_curso ON calificaciones_curso.id_matricula = matricula_curso_persona.id_matricula
+                WHERE
+                matricula_curso_persona.id_persona =  $idPersona";
+        $consulta = $db->consulta($query);		
+          
+        return $consulta;
+    }
 }
 
 

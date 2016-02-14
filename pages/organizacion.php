@@ -5,164 +5,59 @@
       
       $result = $obj_organizacion->get_Organizacion();
       
+       require_once('../clases/table_filter.php');
+      
+      /**
+      * Antes de hacer el llamado a la clase de deben definir los botones que va a tener la 
+      * tabla, se genera una matriz con esta informacion
+      */
+      
+      $botones = array('STDCTRL_SEG'    => array('mensaje'  =>NULL,
+                                                 'href'     =>'organizacion_nueva.php?id=%organizaciones.id_organizacion%'
+                                                 )
+                        );
+      $bonton_crear = array('mensaje'  =>NULL,
+                            'href'     =>'organizacion_nueva.php');
+       
+      /**
+      * Se hace el llamado a la clase para la creación de la tabla
+      */ 
+      $objTable  = new ClassTabla($botones, true,null);
+      
+      /**
+      * Se le indica en un arreglo los campos de la tabla a mostrar y como se van a visualizar
+      * Donde el key de los valores del arrego es el campo en la tabla y en valor del arreglo 
+      * es como se va a visualizar 
+      */ 
+      
+      $campos =array('nit_empresa'        =>'Nit Empresa',
+                    'nombre_empresa'      =>'Nombre Empresa',
+                    'id_organizacion'     =>'Id persona');
+      
+      /**
+      * si se desea ocultar una columna se crea un arreglo con cada campo a ocultar
+      */
+      
+      $ocultar = array('id_organizacion');
+      $tabla = "organizaciones";
+      $objTable->crear_consultas($campos, $tabla, 'id_organizacion', '', $ocultar);
+      
 ?>
-
+<div class="row content">
+    <div class="row">
+    <hr>
+    <div class="twelve columns" >
+        <h5>ORGANIZACIONES</h5>
+        <div class="clear"></div>
+        <div class="row botonera">
+            <a href="organizacion_nueva.php" class="button">Nuevo</a>
+            <a href="#" class="success button">Button</a>
+        </div>        
+        <?php $objTable->imprimir_tabla(); ?>        
+    </div>
+    </div>
+</div>
 <!-- ANIMATED COLUMNS 
 ================================================== -->
-<div class="row content">
-    
-<div class="row">
-    <hr>
-        <!-- TABLES-->
-		<div class="twelve columns" style="text-align: center;">
-			<h5>ORGANIZACIONES</h5>
-            <div class="clear"></div>
-            <div class="row botonera">
-                <a href="organizacion_nueva.php" class="button">Nuevo</a>
-                <a href="#" class="success button">Button</a>
-            </div>
-			<table style="margin: 0 auto !important;">
-			<thead>
-			<tr>
-				<th>
-					Nit Empresa
-				</th>
-				<th>
-					Nombre Empresa
-				</th>
-				<th>
-					Sector Economico
-				</th>
-				<th>
-					Acciones
-				</th>
-			</tr>
-			</thead>
-			<tbody>
-                <?php for($i=0 ; $i < count($result); $i++ ): ?>
-			<tr>
-				<td>
-					<?php echo $result[$i]['nit_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['nombre_empresa']; ?>
-				</td>
-				<td>
-					<?php echo $result[$i]['valor_definicion']; ?>
-				</td>
-				<td>
-					Content
-				</td>
-			</tr>
-            <?php endfor; ?>
-			</tbody>
-			</table>
-		</div>
-	</div>
 
-<!--<div class="row">
-	<div class="twelve columns">
-		<ul class="ca-menu">
-			<li>
-			<a href="#">
-			<span class="ca-icon"><i class="fa fa-heart"></i></span>
-			<div class="ca-content">
-				<h2 class="ca-main">Responsive<br/> Design</h2>
-				<h3 class="ca-sub">Across all major devices</h3>
-			</div>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-			<span class="ca-icon"><i class="fa fa-bullhorn"></i></span>
-			<div class="ca-content">
-				<h2 class="ca-main">Friendly<br/> Documentation</h2>
-				<h3 class="ca-sub">Straight to the point</h3>
-			</div>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-			<span class="ca-icon"><i class="fa fa-user"></i></span>
-			<div class="ca-content">
-				<h2 class="ca-main">Alternate<br/> Home Pages</h2>
-				<h3 class="ca-sub">Full slider, boxed or none</h3>
-			</div>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-			<span class="ca-icon"><i class="fa fa-camera"></i></span>
-			<div class="ca-content">
-				<h2 class="ca-main">Filterable<br/> Portofolio</h2>
-				<h3 class="ca-sub">Isotop & PrettyPhoto</h3>
-			</div>
-			</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<!-- CONTENT 
-================================================== --
-<div class="row">
-	<div class="twelve columns">
-		<div class="centersectiontitle">
-			<h4>What we do</h4>
-		</div>
-	</div>
-	<div class="four columns">
-		<h5>Photography</h5>
-		<p>
-			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
-		</p>
-		<p>
-			<a href="#" class="readmore">Learn more</a>
-		</p>
-	</div>
-	<div class="four columns">
-		<h5>Artwork</h5>
-		<p>
-			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
-		</p>
-		<p>
-			<a href="#" class="readmore">Learn more</a>
-		</p>
-	</div>
-	<div class="four columns">
-		<h5>Logos</h5>
-		<p>
-			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
-		</p>
-		<p>
-			<a href="#" class="readmore">Learn more</a>
-		</p>
-	</div>
-</div>
-<div class="hr">
-</div>
-<!-- TESTIMONIALS 
-================================================== --
-<div class="row">
-	<div class="twelve columns">
-		<div id="testimonials">
-			<blockquote>
-				<p>
-					 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis." <cite>Martin - NY</cite>
-				</p>
-			</blockquote>
-			<blockquote>
-				<p>
-					 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco." <cite>Sandra - LA</cite>
-				</p>
-			</blockquote>
-			<blockquote>
-				<p>
-					 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco." <cite>Jason - MA</cite>
-				</p>
-			</blockquote>
-		</div>
-		<!--end testimonials--
-	</div>
-</div>-->
-</div>
 <?php require_once('commons/footer_int.php'); ?>
