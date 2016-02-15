@@ -275,7 +275,7 @@
                             <h2>Formación Empresa</h2>
                             <p>
                                 <?php if(count($formacion_empresa)>0): ?>
-                                <table class="table table-hover">                                    
+                                <table class="table table-bordered" style="width: 100%;">                                    
                                     <tr>
                                         <th>Nombre del Curso</th>
                                         <th>Calificación</th>   
@@ -283,7 +283,7 @@
                                     <?php for ($i=0; $i < count($formacion_empresa); $i++) :  ?>
                                     <tr>
                                         <td><?php echo $formacion_empresa[$i]['nombre_curso']?></td> 
-                                        <td><?php echo (is_null($formacion_empresa[$i]['aprobo_curso']) || $formacion_empresa[$i]['aprobo_curso'] == '' )?'En progreso':null; ?></td> 
+                                        <td style="text-align:center"><?php echo (is_null($formacion_empresa[$i]['aprobo_curso']) || $formacion_empresa[$i]['aprobo_curso'] == '' )?'En progreso':null; ?></td> 
                                     </tr>
                                     <?php endfor;?>  
                                 </table>
