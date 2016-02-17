@@ -12,9 +12,9 @@
     /**
     *   Llamados a los metodos
     */
-    $nombre = $_SESSION['nombre'];
-    $foto   = $_SESSION['foto'];
-    switch ($_SESSION['perfil']) {
+    $nombre = $_SESSION["nombre"];
+    $foto   = $_SESSION["foto"];
+    switch ($_SESSION["perfil"]) {
     	case 'Administrador':
     		$perfil = 1;
     		break;
@@ -25,7 +25,7 @@
     }
     
 	$objParameters->get_Parameters();
-    $archivo_actual = basename($_SERVER['PHP_SELF']);
+    $archivo_actual = basename($_SERVER["PHP_SELF"]);
     $captcha_publickey = captcha_publickey;
 	$captcha_privatekey = captcha_privatekey;
     $error_captcha=null;

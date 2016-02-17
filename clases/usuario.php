@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 
 /**
 * Clase para la funcionalidad del logueo de los usuarios 
