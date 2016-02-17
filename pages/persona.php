@@ -41,6 +41,13 @@
         <form  name="lugares" action="?ac=save" method="post" id="lugares" onSubmit="return validar(this.email.value)">
             <fieldset>
                 <legend>Datos Personales</legend>
+                <div class="row foto">
+                    <?php if( !is_null($info_persona[0]['foto']) && $info_persona[0]['foto'] != '' ){ ?>
+                        <img src="../images/avatar/<?php echo $info_persona[0]['foto']; ?>" alt="" width="80" class="avatar_inter"/>
+                    <?php }else{ ?>
+                        <img src="../images/gravatar.png" alt="" width="80" class="avatar_inter"/>
+                     <?php } ?>
+                </div>
                 <div class="row">
                     <div class="three columns">
                         <label>Primer Nombre</label>

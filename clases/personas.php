@@ -37,6 +37,7 @@ class ClassPersonas extends ClassConexion
                     personas.direccion,
                     personas.email,
                     personas.activo,
+                    personas.foto,
                     personas.fecha_creacion,
                     personas.usuario_creador,
                     personas.fecha_modificacion,
