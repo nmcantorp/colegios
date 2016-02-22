@@ -2,18 +2,28 @@
       require_once('../clases/ciudad.php');
       require_once('../clases/personas.php');
       require_once('../clases/historial_laboral.php');
+      require_once('../clases/organizacion.php');
+      require_once('../clases/cargos.php');
+      require_once('../clases/valor_definicion.php');
 
       /*Clases*/
-      $obj_ciudad  = new ClassCiudad();
-      $obj_Persona = new ClassPersonas();
+      $obj_ciudad       = new ClassCiudad();
+      $obj_Persona      = new ClassPersonas();
+      $obj_Organizacion = new ClassOrganizacion();
+      $obj_Cargos       = new ClassCargos();
+      $obj_Valor        = new ClassValDefinicion();
 
       /*Metodos*/
       $resultado_ciudad = $obj_ciudad->get_Ciudades();
+      $organizaciones   = $obj_Organizacion->get_Organizacion('nombre_empresa ASC');
+      $cargos           = $obj_Cargos->get_Cargos('descripcion_cargo ASC');
+      $valor_def        = $obj_Valor->get_Definiciones('S', 'TIPO_FORMACION');
+
       $readonly = null;
 
       if($_REQUEST['ac'] == 'save')
       {
-          
+          print_r($_REQUEST);die();
       }elseif( !empty($_REQUEST['id']) )
       {
           $info_persona = $obj_Persona->get_Persona_id($_REQUEST['id']);
@@ -147,7 +157,7 @@
                           </div>
                           <div id="tabs-2">
                             <h2>Experiencia Laboral</h2>
-                            <?php if (count($historia_laboral)>0 ):
+                            <?php if (count($historia_laboral)>0 && !empty($_REQUEST['id'])):
                                 for ($i=0; $i < count($historia_laboral); $i++):  ?>
                             <p>
                                 <hr>
@@ -183,7 +193,7 @@
                                 </div>                                
                             </p>
                             <?php endfor; 
-                                else: ?>
+                                elseif(count($historia_laboral)<=0 && !empty($_REQUEST['id'])): ?>
                                 <p>
                                     <hr>
                                     <div class="row">
@@ -192,7 +202,50 @@
                                         </div>
                                     </div>
                                 </p>
-                                <?php endif; ?> 
+                                
+                            <?php else: ?> 
+                            <p>
+                                <hr>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <label>Nom. Empresa</label>
+                                        <select class="chosen-select" name="empresa" id="empresa" data-placeholder="Seleccione empresa" multiple required>
+                                            <?php for ($i=0; $i < count($organizaciones); $i++) { ?>
+                                                <option value="<?php echo $organizaciones[$i]['id_organizacion']; ?>"><?php echo $organizaciones[$i]['nombre_empresa']; ?></option>
+                                            <?php }?>
+                                        </select>                                       
+                                    </div>
+                                    <div class="six columns">
+                                        <label>Cargo</label> 
+                                        <select class="chosen-select" name="cargo" id="cargo" data-placeholder="Seleccione un cargo" multiple required>
+                                            <?php for ($i=0; $i < count($cargos); $i++) { ?>
+                                                <option value="<?php echo $cargos[$i]['id_cargo']; ?>"><?php echo $cargos[$i]['descripcion_cargo']; ?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="three columns">
+                                        <label>Jefe Inmediato</label>
+                                        <input type="text" class="smoothborder" name="jefe" id="jefe" required="" value="<?php echo $historia_laboral[$i]['jefe_inmediato']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="two columns">
+                                        <label>Tel. Contacto</label>
+                                        <input type="text" class="smoothborder" name="tel" id="tel" required="" value="<?php echo $historia_laboral[$i]['telcontacto']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="one columns">
+                                        <label>Ext.</label>
+                                        <input type="text" class="smoothborder" name="ext" id="ext" value="<?php echo $historia_laboral[$i]['extension']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="three columns">
+                                        <label>F. Ingreso</label>
+                                        <input type="date" class="smoothborder" name="ingreso" id="ingreso" required="" value="<?php echo $historia_laboral[$i]['fecha_ingreso']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="three columns">
+                                        <label>F. Retiro</label>
+                                        <input type="date" class="smoothborder" name="ingreso" id="ingreso" required="" value="<?php echo $historia_laboral[$i]['fecha_retiro']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                </div>                                
+                            </p>
+                            <?php endif; ?> 
                           </div>
                           <div id="tabs-3">
                             <h2>Referencias Personales</h2>
@@ -228,7 +281,7 @@
                                 </div>                                
                             </p>
                             <?php endfor; 
-                                else: ?>
+                                elseif(count($referencia_personal)<=0 && !empty($_REQUEST['id'])): ?>
                                 <p>
                                     <hr>
                                     <div class="row">
@@ -237,7 +290,43 @@
                                         </div>
                                     </div>
                                 </p>
-                                <?php endif; ?>
+                                
+                            <?php else:
+                                for ($i=0; $i < 2; $i++) : ?>
+                            
+                               <p>
+                                <hr>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <label>Nombre</label>
+                                        <input type="text" class="smoothborder" name="nom_referencia_<?php echo $i; ?>" id="nom_referencia_<?php echo $i; ?>" maxlength="100" required="" value="<?php echo $referencia_personal[$i]['nombre_ref']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="six columns">
+                                        <label>Parentesco</label>
+                                        <input type="text" class="smoothborder" name="parentesco_<?php echo $i; ?>" id="parentesco_<?php echo $i; ?>" required="" value="<?php echo $referencia_personal[$i]['parentesco']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="four columns">
+                                        <label>Dirección</label>
+                                        <input type="text" class="smoothborder" name="dir_referencia_<?php echo $i; ?>" id="dir_referencia_<?php echo $i; ?>" required="" value="<?php echo $referencia_personal[$i]['direccion_ref']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="three columns">
+                                        <label>Tipo Referencia</label>
+                                        <select class="chosen-select" name="tip_referencia_<?php echo $i; ?>" id="tip_referencia_<?php echo $i; ?>" data-placeholder="Tipo referencia" multiple required>
+                                            <option value="P">Personal</option>                                            
+                                            <option value="F">Familiar</option>                                            
+                                        </select>                                        
+                                    </div>
+                                    <div class="two columns">
+                                        <label>Teléfono</label>
+                                        <input type="text" class="smoothborder" name="tel_referencia_<?php echo $i; ?>" id="tel_referencia_<?php echo $i; ?>" required="" value="<?php echo $referencia_personal[$i]['telefono_ref']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="two columns">
+                                        <label>Celular</label>
+                                        <input type="text" class="smoothborder" name="cel_referencia_<?php echo $i; ?>" id="cel_referencia_<?php echo $i; ?>" value="<?php echo $referencia_personal[$i]['celular_ref']; ?>" <?php echo $readonly; ?>/>
+                                    </div>                                    
+                                </div>                                
+                            </p>
+                            <?php endfor;  endif; ?>
                           </div>
                           <div id="tabs-4">
                             <h2>Funciones</h2>
@@ -280,7 +369,7 @@
                                 </div>                                
                             </p>
                             <?php endfor; 
-                                else: ?>
+                                elseif(count($educacion_formal)<=0 && !empty($_REQUEST['id'])): ?>
                                 <p>
                                     <hr>
                                     <div class="row">
@@ -289,7 +378,38 @@
                                         </div>
                                     </div>
                                 </p>
-                                <?php endif; ?> 
+                                
+                            <?php else: ?>
+                                <p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="six columns">
+                                            <label>Nom. Institución</label>
+                                            <input type="text" class="smoothborder" name="text" id="institucion" maxlength="100" required="" value="<?php echo $educacion_formal[$i]['institucion']; ?>" <?php echo $readonly; ?>/>
+                                        </div>
+                                        <div class="six columns">
+                                            <label>Tip. Formación</label>
+                                            <input type="text" class="smoothborder" name="tipo_form" id="tipo_form" required="" value="<?php echo $educacion_formal[$i]['tipo_formacion']; ?>" <?php echo $readonly; ?>/>
+                                        </div>
+                                        <div class="six columns">
+                                            <label>Titulo Profesional</label>
+                                            <input type="text" class="smoothborder" name="tit_profesional" id="tit_profesional" required="" value="<?php echo $educacion_formal[$i]['titulo_profesional']; ?>" <?php echo $readonly; ?>/>
+                                        </div>
+                                        <div class="four columns">
+                                            <label>Titulo Obtenido</label>
+                                            <select class="chosen-select" data-placeholder="Elige tu titulo" style="width:350px;" name="titulo_profesional" id="titulo_profesional" multiple required>
+                                            <?php for ($i=0; $i < count($valor_def); $i++) { ?>
+                                                <option value="<?php echo $valor_def[$i]['id_valor_def']; ?>"><?php echo $valor_def[$i]['valor_definicion']; ?></option> 
+                                            <?php }?>
+                                            </select>                                            
+                                        </div>
+                                        <div class="two columns">
+                                            <label>Año Egresado</label>
+                                            <input type="text" class="smoothborder" name="anyo_egresado" id="anyo_egresado" maxlength="4" value="<?php echo $educacion_formal[$i]['anyo_egresado']; ?>" <?php echo $readonly; ?>/>
+                                        </div>                                    
+                                    </div>                                
+                                </p>
+                            <?php endif; ?> 
                           </div>
                           <div id="tabs-6">
                             <h2>Formación Empresa</h2>

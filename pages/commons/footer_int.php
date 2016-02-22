@@ -75,3 +75,11 @@
 <script src="../javascripts/responsivemenu.js"></script>
 <script src="../javascripts/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 <script src="../javascripts/funciones_propias.js"></script>
+<!-- Include Select2 CSS -->
+<script src="../javascripts/chosen/chosen.jquery.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".chosen").chosen();
+    });
+</script>

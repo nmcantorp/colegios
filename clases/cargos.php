@@ -15,7 +15,7 @@ class ClassCargos extends ClassConexion
     * 
     * return boolean   
     */
-    function get_Cargos()
+    function get_Cargos($orden=null)
     {
 
         $db = new ClassConexion();
@@ -31,7 +31,7 @@ class ClassCargos extends ClassConexion
                 cargos.fecha_modificacion,
                 cargos.usuario_modificador
                 FROM cargos";
-
+        if(!is_null($orden)) $query.=" ORDER BY $orden ";
         $consulta = $db->consulta($query);		
           
         return $consulta;  

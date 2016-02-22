@@ -81,7 +81,8 @@ function enviar()
             if(inputs[j].required){
                 if( inputs[j].value=='' || inputs[j].value == null)
                 {
-                    $("#"+inputs[j].id).attr('style', 'border:1px solid red !important;');
+                    if($("#"+inputs[j].id).is(':visible'))
+                        $("#"+inputs[j].id).attr('style', 'border:1px solid red !important;');
                     conteo_error++;
                 }else{
                     $("#"+inputs[j].id).removeAttr('style')

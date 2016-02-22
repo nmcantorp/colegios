@@ -15,7 +15,7 @@ class ClassOrganizacion extends ClassConexion
     * 
     * return boolean   
     */
-    function get_Organizacion()
+    function get_Organizacion($orden=null)
     {
 
         $db = new ClassConexion();
@@ -43,6 +43,9 @@ class ClassOrganizacion extends ClassConexion
                 organizaciones
                 INNER JOIN valores_definiciones ON valores_definiciones.id_valor_def = organizaciones.id_sec_financiero
                 ";
+        
+        if(!is_null($orden)) $query .= "ORDER BY $orden";
+        
         $consulta = $db->consulta($query);		
           
         return $consulta;  
