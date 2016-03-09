@@ -145,9 +145,10 @@ class ClassTabla extends ClassConexion
         {
             $mensaje_final =null;
             foreach ($this->creacion as $key => $value) {
-                if(!is_null($value_int) && $key=='mensaje'){
+             
+                if(!is_null($value) && !empty($value) && $key=='mensaje'){
                     $mensaje_final = "if(confirm('". $value."' ))";
-                }elseif(is_null($value) && $key=='mensaje')
+                }elseif(is_null($value) && empty($value) && $key=='mensaje')
                 {
                     $mensaje_final = null;
                 }

@@ -51,41 +51,40 @@
         <form  name="lugares" action="?ac=save" method="post" id="lugares" onSubmit="return validar(this.email.value)">
             <fieldset>
                 <legend>Datos Personales</legend>
-                <div class="row foto">
-                    <?php if( !is_null($info_persona[0]['foto']) && $info_persona[0]['foto'] != '' ){ ?>
-                        <img src="../images/avatar/<?php echo $info_persona[0]['foto']; ?>" alt="" width="80" class="avatar_inter"/>
-                    <?php }else{ ?>
-                        <img src="../images/gravatar.png" alt="" width="80" class="avatar_inter"/>
-                     <?php } ?>
-                </div>
                 <div class="row">
-                    <div class="three columns">
+                    <div class="foto three columns">
+                        <?php if( !is_null($info_persona[0]['foto']) && $info_persona[0]['foto'] != '' ){ ?>
+                            <img src="../images/avatar/<?php echo $info_persona[0]['foto']; ?>" alt="" width="80" class="avatar_inter"/>
+                        <?php }else{ ?>
+                            <img src="../images/gravatar.png" alt="" width="80" class="avatar_inter"/>
+                         <?php } ?>
+                    </div>
+                    <div class="four columns">
                         <label>Primer Nombre</label>
                         <input type="text" class="smoothborder" name="primer_nom" id="primer_nom" maxlength="20" required="" value="<?php echo $info_persona[0]['primer_nom']; ?>" <?php echo $readonly; ?>/>
                     </div>
-                    <div class="three columns">
+                    <div class="four columns">
                         <label>Segundo Nombre</label>
                         <input type="text" class="smoothborder" name="segundo_nom" id="segundo_nom" maxlength="20" value="<?php echo $info_persona[0]['segundo_nom']; ?>" <?php echo $readonly; ?>/>
                     </div>
-                    <div class="three columns">
+
+                    <div class="four columns">
                         <label>Primer Apellido</label>
                         <input type="text" class="smoothborder" name="primer_ape" id="primer_ape" maxlength="20" required="" value="<?php echo $info_persona[0]['primer_ape']; ?>" <?php echo $readonly; ?>/>
                     </div>
-                    <div class="three columns">
+                    <div class="four columns">
                         <label>Segundo Apellido</label>
                         <input type="text" class="smoothborder" name="segundo_ape" id="segundo_ape" maxlength="20" value="<?php echo $info_persona[0]['segundo_ape']; ?>" <?php echo $readonly; ?>/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="four columns">
-                        <label>Documento Nacional de Identidad (D.N.I)</label>
+                    <div class="three columns">
+                        <label>Documento de Identidad (D.N.I)</label>
                         <input type="text" class="smoothborder" name="doc_identidad" id="doc_identidad" maxlength="15" onkeypress="return numero(event);" required="" value="<?php echo $info_persona[0]['doc_identidad']; ?>" <?php echo $readonly; ?>/>
                     </div>
-                    <div class="four columns">
+                    <div class="three columns">
                         <label>Fecha de Nacimiento</label>
                         <input type="date" class="smoothborder" name="fecha_nac" id="fecha_nac" required="" value="<?php echo $info_persona[0]['fecha_nac']; ?>" <?php echo $readonly; ?>/>
                     </div> 
-                    <div class="four columns">
+                    <div class="three columns">
                         <label>Genero</label>
                         <select class="smoothborder" id="genero" name="genero" required="" <?php echo $disabled; ?>>
                             <option value=""></option>
@@ -93,6 +92,8 @@
                             <option value="F" <?php echo ($info_persona[0]['genero'] == 'F')?'selected':null; ?>>Femenino</option>
                         </select>
                     </div>
+                </div>
+                <div class="row">
                 </div>
             </fieldset>
             <fieldset>
