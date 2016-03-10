@@ -15,7 +15,7 @@ class ClassCiudad extends ClassConexion
     * 
     * return boolean   
     */
-    function get_Ciudades()
+    function get_Ciudades($id_ciudad=null)
     {
 
         $db = new ClassConexion();
@@ -35,7 +35,11 @@ class ClassCiudad extends ClassConexion
                 FROM
                 ciudades
                 INNER JOIN departamentos ON ciudades.id_departamento = departamentos.id_departamento
-                INNER JOIN paises ON departamentos.id_pais = paises.id_pais";
+                INNER JOIN paises ON departamentos.id_pais = paises.id_pais
+                WHERE 1 ";
+
+        if(!is_null($id_ciudad)) $query.=" AND ciudades.id_ciudad = $id_ciudad ";
+
         $consulta = $db->consulta($query);		
           
         return $consulta;  

@@ -23,7 +23,49 @@
 
       if($_REQUEST['ac'] == 'save')
       {
-          print_r($_REQUEST);die();
+        $result         = $obj_Persona->getPersonabyDNI($_REQUEST['doc_identidad']);
+        $info_ciudad    = $obj_ciudad->get_Ciudades($_REQUEST['ciudad']);
+
+        if(count($result)<= 0  ){
+            $data = array(  'doc_identidad' => $_REQUEST['doc_identidad'],
+                            'fecha_nac' => $_REQUEST['fecha_nac'],
+                            'primer_nom' => $_REQUEST['primer_nom'],
+                            'segundo_nom' => $_REQUEST['segundo_nom'],
+                            'primer_ape' => $_REQUEST['primer_ape'],
+                            'segundo_ape' => $_REQUEST['segundo_ape'],
+                            'nombre_completo' => $_REQUEST['primer_nom']." ". $_REQUEST['segundo_nom']." ". $_REQUEST['primer_ape']." ". $_REQUEST['segundo_ape'],
+                            'genero' => $_REQUEST['genero'],
+                            'id_departamento' => $info_ciudad[0]['id_departamento'],
+                            'id_ciudad' => $info_ciudad[0]['id_ciudad'],
+                            'telefono' => $_REQUEST['telefono'],
+                            'celular' => $_REQUEST['celular'],
+                            'direccion' => $_REQUEST['direccion'],
+                            'email' => $_REQUEST['email'],
+                            'activo' => 'S',
+                            'fecha_creacion' => 'now()',
+                            'usuario_creador' => $_SESSION['id_usuario'],
+                            'fecha_creador' => 'now()',
+                            'tipo_referencia0'=>$_REQUEST['tip_referencia_0'],
+                            'nombre_ref0'=>$_REQUEST['nom_referencia_0'],
+                            'telefono_ref0'=>$_REQUEST['tel_referencia_0'],
+                            'celular_ref0'=>$_REQUEST['cel_referencia_0'],
+                            'direccion_ref0'=>$_REQUEST['dir_referencia_0'],
+                            'tipo_referencia1'=>$_REQUEST['tip_referencia_1'],
+                            'nombre_ref1'=>$_REQUEST['nom_referencia_1'],
+                            'telefono_ref1'=>$_REQUEST['tel_referencia_1'],
+                            'celular_ref1'=>$_REQUEST['cel_referencia_1'],
+                            'direccion_ref1'=>$_REQUEST['dir_referencia_1'],
+                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
+                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
+                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
+                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
+
+                            );
+
+            var_dump($data);
+        }   
+
+        print_r($_REQUEST);die();
       }elseif( !empty($_REQUEST['id']) )
       {
           $info_persona = $obj_Persona->get_Persona_id($_REQUEST['id']);
