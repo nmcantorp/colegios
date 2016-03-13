@@ -52,7 +52,7 @@ tr.tbl-row-highlight:hover
 	}
 td.tbl-nav 
 	{
-	background: url(/images/head_bg.gif); 
+	background: url(/images/head_bg.gif);   
 	height: 20px; 
 	border-top: 2px solid #888888;
 	color: #4D4D4D;

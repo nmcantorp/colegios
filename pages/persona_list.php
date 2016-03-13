@@ -47,7 +47,7 @@
     <div class="row">
     <hr>
     <div class="twelve columns" >
-        <h5>Lista de personal</h5>        
+        <h5>Lista de personales*</h5>        
         <?php $objTable->imprimir_tabla(); ?>        
     </div>
     </div>

@@ -71,7 +71,7 @@ if (EyeDataGrid::isAjaxUsed())
 ?>
 <html>
 <head>
-<title>Seguimiento de Gestion</title>
+<title>Seguimiento</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
 <link href="stylesheets/grilla.css" rel="stylesheet" type="text/css">

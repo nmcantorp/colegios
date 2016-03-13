@@ -47,7 +47,7 @@
     <div class="row">
     <hr>
     <div class="twelve columns" >
-        <h5>ORGANIZACIONES</h5>
+        <h5>ORGANIZACIONES CGH*</h5>
         <div class="clear"></div>
         <div class="row botonera">
             <a href="organizacion_nueva.php" class="button">Nuevo</a>
