@@ -80,9 +80,9 @@
 <div id="panel">
 	<div class="row">
         <div class="twelve columns">
-            <img src="../images/sialen.png" width="40" height="40" class="pics" alt="info">
+            <img src="../images/logo_2.png" width="40" height="40" class="pics" alt="info">
 			<div class="infotext">
-                <center>"SEIP" - MODULO&nbsp;DE&nbsp;RECURSOS&nbsp;HUMANOS.</center>
+                <center>"SEIP" - SERVICIO&nbsp;EDUCATIVO&nbsp;INTEGRAL&nbsp;PERSONALIZADO.</center>
 			</div>
 		</div>
 	</div>
@@ -95,7 +95,7 @@
 <div class="row">
 	<div class="headerlogo four columns">
 		<div class="logo">
-			<a href="index.html">
+			<a href="index.php">
 			<img src="../images/logo.png" width="140" class="pics" alt="info">
 			</a>
 		</div>

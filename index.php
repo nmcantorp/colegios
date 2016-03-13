@@ -1,35 +1,33 @@
-<?php require_once('pages/commons/header.php'); 
+<?php require_once('pages/commons/header.php');
 
 if( $_REQUEST['ac']=='login' )
 {
     require_once('clases/usuario.php');
     $objUsuario = new ClassUsuario();
     $resultado = $objUsuario->valida_usuario($_REQUEST['usuario'],$_REQUEST['password']);
-    
+
     if(count($resultado))
     {
         for($i=0; $i<count($resultado);$i++)
         {
             $_SESSION['nombre']     = ucfirst($resultado[$i]['nombre'])." ".ucfirst($resultado[$i]['apellido']);
             $_SESSION['perfil']     = $resultado[$i]['perfil'];
-            $_SESSION['id_usuario'] = $resultado[$i]['id_usuario']; 
+            $_SESSION['id_usuario'] = $resultado[$i]['id_usuario'];
 
             if(file_exists('images/perfil/'.$resultado[$i]['foto']))
             {
                 $_SESSION['foto'] = 'images/perfil/'.$resultado[$i]['foto'];
-                
+
             }else{
                 $_SESSION['foto'] = false;
             }
             $ingreso = true;
-        } 
-        echo "<script language=\"javascript\">window.location.href=\"pages/index.php\";</script>";  
-        exit;
-        //header("Location: pages/index2.php");
+        }
+
+        header("Location: pages/index.php");
     }
-}else{
-    unset($_SESSION);
 }
+    unset($_SESSION);
 ?>
 
 <!-- SUBHEADER
@@ -57,6 +55,18 @@ if( $_REQUEST['ac']=='login' )
                     <br>
                     <input name="ingresar" type="submit" class="success button" value="Ingresar"/>
                 </form>
+                    <!--<h3>RECURSOS HUMANOS :</h3>
+                    <div class="login">
+                        <a href="index2.php" class="clear actbutton">Ingresar</a>
+                    </div><br>
+                    <h3>PLATAFORMA VIRTUAL :</h3>
+                    <div class="login">
+                        <a href="http://205.134.224.208/~sialen5/virtual_alcanos/login/index.php" class="actbutton">Ingresar</a>
+                    </div><br>-->
+                    <!--<h3>CRM :</h3>
+                    <div class="login">
+                        <a href="#" class="clear actbutton">Ingresar</a>
+                    </div>-->
 				 <!-- <h1>Our Photography Studio</h1>
 				<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</h3>
 			<div class="minipause"></div><br/>
@@ -65,7 +75,7 @@ if( $_REQUEST['ac']=='login' )
 		</div>
 	</div>
 </div>
-<!-- ANIMATED COLUMNS 
+<!-- ANIMATED COLUMNS
 ================================================== -->
 <div class="row">
 	<div class="twelve columns">
@@ -109,7 +119,7 @@ if( $_REQUEST['ac']=='login' )
 		</ul>
 	</div>
 </div>
-<!-- CONTENT 
+<!-- CONTENT
 ================================================== -->
 <div class="row">
 	<div class="twelve columns">
@@ -178,7 +188,7 @@ if( $_REQUEST['ac']=='login' )
 </div>
 <div class="hr">
 </div>
-<!-- CLIENTS 
+<!-- CLIENTS
 ================================================== -->
 <div class="row">
 	<div class="twelve columns">
@@ -209,7 +219,7 @@ if( $_REQUEST['ac']=='login' )
 		</div>
 	</div>
 </div>
-<!-- TESTIMONIALS 
+<!-- TESTIMONIALS
 ================================================== -->
 <div class="row">
 	<div class="twelve columns">

@@ -1,1 +1,0 @@
-para que los campos de modificacion, cargue la fecha actual por default se asigna el valor en Default -> CURRENT_TIMESTAMP
