@@ -16,15 +16,23 @@
       }
       
 ?>
-
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 <font style="font-size:22px; color:#FFFFFF;">Informaci&oacute;n Organizaci&oacute;n</font>
+			</p>
+		</div>
+	</div>
+</div>
 <!-- ANIMATED COLUMNS 
 ================================================== -->
 <div class="row content">
-    
 <div class="row">
     <hr>
     <div class="twelve columns" >
-        <h5>Crear Organización</h5>
         <form  name="empresas" action="?ac=save" method="post" id="empresas">
             <fieldset>
                 <legend>Organización</legend>
@@ -89,6 +97,7 @@
                 <div class="row botonera_form">
                     <a href="javascript:enviar();" class="success button">Guardar</a>
                     <a href="javascript:reset();" class="alert button">Limpiar</a>
+                    <a href="javascript:history.back()" class="alert button">Volver</a>
                 </div>
                  </fieldset>
         </form>

@@ -12,10 +12,10 @@
                         );
       $bonton_crear = array('mensaje'  =>NULL,
                             'href'     =>'persona.php');
-       
+
       /**
       * Se hace el llamado a la clase para la creación de la tabla
-      */ 
+      */
       $objTable  = new ClassTabla($botones, true,$bonton_crear);
       
       /**
@@ -40,14 +40,24 @@
       $objTable->crear_consultas($campos, 'personas', 'id_persona', '', $ocultar);
       
 ?>
-
+<link href="../stylesheets/grilla.css" rel="stylesheet" type="text/css">
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 <font style="font-size:22px; color:#FFFFFF;">Lista de Personal</font>
+			</p>
+		</div>
+	</div>
+</div>
 <!-- ANIMATED COLUMNS 
 ================================================== -->
 <div class="row content">
     <div class="row">
     <hr>
     <div class="twelve columns" >
-        <h5>Lista de personales*</h5>        
         <?php $objTable->imprimir_tabla(); ?>        
     </div>
     </div>

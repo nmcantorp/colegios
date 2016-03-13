@@ -16,6 +16,9 @@ table.tbl
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
 	}
+table.tbl input{
+  border: 1px solid #999999 !important;
+}
 td.tbl-header 
 	{ 
 	background: url(/images/head_bg.gif); 
@@ -52,7 +55,7 @@ tr.tbl-row-highlight:hover
 	}
 td.tbl-nav 
 	{
-	background: url(/images/head_bg.gif);   
+	background: url(/images/head_bg.gif);
 	height: 20px; 
 	border-top: 2px solid #888888;
 	color: #4D4D4D;
@@ -137,5 +140,10 @@ span.page-selected
 	color: black; 
 	font-weight: bold;
 	}
-input.tbl-checkbox 
+select
+    {
+    width: 20%;
+    height: 30px;
+    }
+input.tbl-checkbox
 	{}

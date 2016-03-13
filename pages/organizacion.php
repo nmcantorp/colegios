@@ -18,11 +18,10 @@
                         );
       $bonton_crear = array('mensaje'  =>NULL,
                             'href'     =>'organizacion_nueva.php');
-       
       /**
       * Se hace el llamado a la clase para la creación de la tabla
       */ 
-      $objTable  = new ClassTabla($botones, true,null);
+      $objTable  = new ClassTabla($botones, true,$bonton_crear);
       
       /**
       * Se le indica en un arreglo los campos de la tabla a mostrar y como se van a visualizar
@@ -43,16 +42,27 @@
       $objTable->crear_consultas($campos, $tabla, 'id_organizacion', '', $ocultar);
       
 ?>
+<link href="../stylesheets/grilla.css" rel="stylesheet" type="text/css">
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 <font style="font-size:22px; color:#FFFFFF;">Organizaciones</font>
+			</p>
+		</div>
+	</div>
+</div>
 <div class="row content">
     <div class="row">
     <hr>
     <div class="twelve columns" >
-        <h5>ORGANIZACIONES CGH*</h5>
         <div class="clear"></div>
-        <div class="row botonera">
+<!--        <div class="row botonera">
             <a href="organizacion_nueva.php" class="button">Nuevo</a>
             <a href="#" class="success button">Button</a>
-        </div>        
+        </div>-->
         <?php $objTable->imprimir_tabla(); ?>        
     </div>
     </div>

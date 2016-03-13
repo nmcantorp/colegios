@@ -96,11 +96,11 @@
 	<div class="headerlogo four columns">
 		<div class="logo">
 			<a href="index.html">
-			<img src="../images/logo.png" width="140" height="40" class="pics" alt="info">
+			<img src="../images/logo.png" width="140" class="pics" alt="info">
 			</a>
 		</div>
 	</div>
-    
+
     <?php require_once('menu.php'); ?>    
     <input type="hidden" id="foto_temp" value="<?php echo $foto ?>"> 
 </div>

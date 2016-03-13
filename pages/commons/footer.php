@@ -44,10 +44,10 @@
 <div class="copyright">
 	<div class="row">
 		<div class="six columns">
-			 &copy;<span class="small">Copyright 2016 "SEIP" RR.HH</span>
+			 <span class="small">&copy; Copyright 2016 "SEIP" RR.HH</span>
 		</div>
 		<div class="six columns">
-			<span class="small floatright">Dise&ntilde;ado por:&nbsp;&nbsp;<a href="http://www.sialen.com/" target="_blank">Sialen Ingenieros</a></span>
+			<span class="small floatright">Dise&ntilde;ado por:&nbsp;&nbsp;<a href="http://www.sialen.com/" target="_blank"><font style="font-size:12px; font-weight: bold; color:#3399FF;">Sialen Ingenieros</font></a></span>
 		</div>
 	</div>
 </div>

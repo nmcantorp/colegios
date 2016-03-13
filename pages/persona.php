@@ -80,16 +80,24 @@
       
       
 ?>
-
+<script src="../javascripts/funciones_especificas/personas.js"></script>
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 <font style="font-size:22px; color:#FFFFFF;">Informaci&oacute;n Personal</font>
+			</p>
+		</div>
+	</div>
+</div>
 <!-- ANIMATED COLUMNS 
 ================================================== -->
-
-<script src="../javascripts/funciones_especificas/personas.js"></script>
 <div class="row content">
     <div class="row">
     <hr>
     <div class="twelve columns" >
-        <!-- <h5>Crear Personas</h5> -->
         <form  name="lugares" action="?ac=save" method="post" id="lugares" onSubmit="return validar(this.email.value)">
             <fieldset>
                 <legend>Datos Personales</legend>
@@ -489,6 +497,7 @@
                 <?php if( empty($_REQUEST['id']) || !isset($_REQUEST['id'])):?>
                     <a href="javascript:enviar();" class="success button">Guardar</a>
                 <?php endif; ?>
+                <a href="javascript:reset();" class="alert button">Limpiar</a>
                 <a href="javascript:history.back()" class="alert button">Volver</a>
             </div>
         </form>
