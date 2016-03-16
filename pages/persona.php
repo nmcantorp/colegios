@@ -5,6 +5,7 @@
       require_once('../clases/organizacion.php');
       require_once('../clases/cargos.php');
       require_once('../clases/valor_definicion.php');
+      require_once('../clases/asignacion.php');
 
       /*Clases*/
       $obj_ciudad       = new ClassCiudad();
@@ -12,6 +13,7 @@
       $obj_Organizacion = new ClassOrganizacion();
       $obj_Cargos       = new ClassCargos();
       $obj_Valor        = new ClassValDefinicion();
+      $obj_Asignacion   = new ClassAsignacion();
 
       /*Metodos*/
       $resultado_ciudad = $obj_ciudad->get_Ciudades();
@@ -66,7 +68,7 @@
         }   
 
         print_r($_REQUEST);die();
-      }elseif( !empty($_REQUEST['id']) )
+      }elseif( !empty($_REQUEST['id']) && is_numeric($_REQUEST['id']))
       {
           $info_persona = $obj_Persona->get_Persona_id($_REQUEST['id']);
           $readonly = 'readonly';
@@ -76,6 +78,8 @@
           $educacion_formal = $obj_Persona->getEduFormal($_REQUEST['id']);
           $referencia_personal = $obj_Persona->getReferenciaPersonal($_REQUEST['id']);
           $formacion_empresa =  $obj_Persona->getFormacionEmpresa($_REQUEST['id']);
+          $asignacion = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
+          $cargos = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
       }
       
       
@@ -197,7 +201,42 @@
                           </ul>
                           <div id="tabs-1">
                             <h2>Asignación</h2>
+                            <?php if (count($asignacion)>0 && !empty($_REQUEST['id'])):
+                                for ($i=0; $i < count($asignacion); $i++): 
+                                    $checked = ($asignacion[$i]['estado'] == 1)?'checked':'';
+                                 ?>
                             <p>
+                                <hr>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <label>Nom. Empresa</label>
+                                        <input type="text" class="smoothborder" name="text" id="empresa" maxlength="100" required="" value="<?php echo $asignacion[$i]['nombre_empresa']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="six columns">
+                                        <label>Cargo</label>
+                                        <input type="text" class="smoothborder" name="cargo" id="cargo" required="" value="<?php echo $asignacion[$i]['descripcion_cargo']; ?>" <?php echo $readonly; ?>/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="three columns">
+                                            <label>F. Ingreso</label>
+                                            <input type="text" class="smoothborder" name="ingreso" id="ingreso" required="" value="<?php echo $asignacion[$i]['fecha_ini']; ?>" <?php echo $readonly; ?>/>
+                                        </div>
+                                        <div class="three columns">
+                                            <label>F. Retiro</label>
+                                            <input type="text" class="smoothborder" name="retiro" id="retiro" required="" value="<?php echo $asignacion[$i]['fecha_fin']; ?>" <?php echo $readonly; ?>/>
+                                        </div>
+                                        <div class="three columns">
+                                            <label>Estado</label>
+                                            <input type="checkbox" class="smoothborder" name="estado" id="estado" required="" value="<?php echo $asignacion[$i]['estado']; ?>" <?php echo $readonly; ?> <?php echo $checked;?> <?php echo $disabled; ?>/>
+                                        </div>
+                                         <div class="three columns">
+                                         </div>
+                                    </div>
+                                </div>                                
+                            </p>
+                            <?php endfor; 
+                                elseif(count($asignacion)<=0 && !empty($_REQUEST['id'])): ?>
+                                <p>
                                     <hr>
                                     <div class="row">
                                         <div class="twelve columns">
@@ -205,6 +244,48 @@
                                         </div>
                                     </div>
                                 </p>
+                                
+                            <?php else: ?>
+                            <p>
+                                <hr>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <label>Nom. Empresa</label>
+                                        <select class="chosen-select" name="empresa_asigna" id="empresa_asigna" data-placeholder="Seleccione empresa" multiple required>
+                                            <?php for ($i=0; $i < count($organizaciones); $i++) { ?>
+                                                <option value="<?php echo $organizaciones[$i]['id_organizacion']; ?>"><?php echo $organizaciones[$i]['nombre_empresa']; ?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="six columns">
+                                        <label>Cargo</label>
+                                        <select class="chosen-select" name="cargo_asigna" id="cargo_asigna" data-placeholder="Seleccione un cargo" multiple required>
+                                            <?php for ($i=0; $i < count($cargos); $i++) { ?>
+                                                <option value="<?php echo $cargos[$i]['id_cargo']; ?>"><?php echo $cargos[$i]['descripcion_cargo']; ?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="three columns">
+                                            <label>F. Ingreso</label>
+                                            <input type="date" class="smoothborder" name="ingreso_asigna" id="ingreso_asigna" required="" />
+                                        </div>
+                                        <div class="three columns">
+                                            <label>F. Retiro</label>
+                                            <input type="date" class="smoothborder" name="retiro_asigna" id="ingreso_asigna" />
+                                        </div>
+                                        <div class="three columns">
+                                            <label>Estado</label>
+                                            <input type="checkbox" class="smoothborder" name="estado_asigna" id="estado_asigna" required="" value="<?php echo $asignacion[$i]['estado']; ?>" <?php echo $readonly; ?> <?php echo $checked;?> <?php echo $disabled; ?>/>
+                                        </div>
+                                         <div class="three columns">
+                                         </div>
+                                    </div>
+                                </div>                                
+                            </p>
+
+                            <?php 
+                                endif; ?>
                           </div>
                           <div id="tabs-2">
                             <h2>Experiencia Laboral</h2>
@@ -496,8 +577,8 @@
             <div class="row botonera_form">
                 <?php if( empty($_REQUEST['id']) || !isset($_REQUEST['id'])):?>
                     <a href="javascript:enviar();" class="success button">Guardar</a>
+                    <a href="javascript:reset();" class="alert button">Limpiar</a>
                 <?php endif; ?>
-                <a href="javascript:reset();" class="alert button">Limpiar</a>
                 <a href="javascript:history.back()" class="alert button">Volver</a>
             </div>
         </form>
