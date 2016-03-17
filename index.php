@@ -24,7 +24,12 @@ if( $_REQUEST['ac']=='login' )
             $ingreso = true;
         }
 
-        header("Location: pages/index.php");
+        ?>
+	    <script type="text/javascript">
+			window.location="pages/index.php";
+		</script>
+        <?php
+        //header('Location: pages/index.php');
     }
 }
     unset($_SESSION);
