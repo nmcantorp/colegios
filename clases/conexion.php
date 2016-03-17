@@ -43,7 +43,7 @@ class ClassConexion
 	public function consulta($consulta, $tipo='SELECT'){
         $resultado_final = array();
 		$this->total_consultas++; 
-		$resultado = mysql_query($consulta,$this->conexion);
+		$resultado = mysql_query($consulta,$this->conexion); 
 		if(!$resultado){ 
 			echo 'MySQL Error: ' . mysql_error();
 			exit;

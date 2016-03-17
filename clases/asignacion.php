@@ -32,13 +32,13 @@ class ClassAsignacion extends ClassConexion
                 asignacion_laboral
                 INNER JOIN organizaciones ON asignacion_laboral.id_sucursal = organizaciones.id_organizacion
                 INNER JOIN cargos ON cargos.id_cargo = asignacion_laboral.id_cargo
-                INNER JOIN valores_definiciones ON valores_definiciones.id_valor_def = asignacion_laboral.id_tipo_departamento 
+                LEFT JOIN valores_definiciones ON valores_definiciones.id_valor_def = asignacion_laboral.id_tipo_departamento 
                 AND valores_definiciones.id_tipo_definicion = 12
                 WHERE
                 asignacion_laboral.id_persona = $user_id
                 GROUP BY
                 asignacion_laboral.id_asignacion_lab";
-            
+ 
         $consulta = $db->consulta($query);		
           
         return $consulta;  

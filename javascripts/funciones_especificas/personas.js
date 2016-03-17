@@ -11,6 +11,6 @@ $(function() {
     $( "div[id^='tip_referencia_']" ).css('width', '170px');
     $( "div#cargo_chosen" ).css('width', '340px');
     $( "div#empresa_chosen" ).css('width', '340px');
-    
+    $( "div#institucion_chosen" ).css('width', '340px');   
 
 });

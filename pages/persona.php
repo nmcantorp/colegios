@@ -20,6 +20,7 @@
       $organizaciones   = $obj_Organizacion->get_Organizacion('nombre_empresa ASC');
       $cargos           = $obj_Cargos->get_Cargos('descripcion_cargo ASC');
       $valor_def        = $obj_Valor->get_Definiciones('S', 'TIPO_FORMACION');
+      $valor_def        = $obj_Valor->get_Definiciones('S', 'TIPO_FORMACION');
 
       $readonly = null;
 
@@ -57,29 +58,37 @@
                             'telefono_ref1'=>$_REQUEST['tel_referencia_1'],
                             'celular_ref1'=>$_REQUEST['cel_referencia_1'],
                             'direccion_ref1'=>$_REQUEST['dir_referencia_1'],
-                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
-                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
-                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
-                            'tipo_referencia'=>$_REQUEST['tip_referencia_0'],
-
+                            'empresa_asigna'=>$_REQUEST['empresa_asigna'],
+                            'cargo_asigna'=>$_REQUEST['cargo_asigna'],
+                            'ingreso_asigna'=>$_REQUEST['ingreso_asigna'],
+                            'retiro_asigna'=>$_REQUEST['retiro_asigna'],
+                            'estado_asigna'=>((is_null($_REQUEST['retiro_asigna']) || $_REQUEST['retiro_asigna'] == '' )?'S':'N'),
+                            'institucion'=>$_REQUEST['institucion'],
+                            'titulo_profesional'=>1,
+                            'tipo_formacion'=>$_REQUEST['titulo_profesional'],
+                            'empresa'=>$_REQUEST['empresa'],
+                            'cargo'=>$_REQUEST['cargo'],
+                            'jefe'=>$_REQUEST['jefe'],
+                            'contacto_jefe'=>$_REQUEST['tel'],
+                            'ext_jefe'=>$_REQUEST['ext'],
+                            'ingreso'=>$_REQUEST['ingreso'],
+                            'retiro'=>$_REQUEST['retiro'],
                             );
-
-            var_dump($data);
+            $resultado = $obj_Persona->save_persona($data);
+            header("Location: persona_list.php");
         }   
-
-        print_r($_REQUEST);die();
       }elseif( !empty($_REQUEST['id']) && is_numeric($_REQUEST['id']))
       {
           $info_persona = $obj_Persona->get_Persona_id($_REQUEST['id']);
           $readonly = 'readonly';
           $disabled = 'disabled';
           
-          $historia_laboral = $obj_Persona->getHistoriaLab($_REQUEST['id']);
-          $educacion_formal = $obj_Persona->getEduFormal($_REQUEST['id']);
-          $referencia_personal = $obj_Persona->getReferenciaPersonal($_REQUEST['id']);
-          $formacion_empresa =  $obj_Persona->getFormacionEmpresa($_REQUEST['id']);
-          $asignacion = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
-          $cargos = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
+          $historia_laboral     = $obj_Persona->getHistoriaLab($_REQUEST['id']);
+          $educacion_formal     = $obj_Persona->getEduFormal($_REQUEST['id']);
+          $referencia_personal  = $obj_Persona->getReferenciaPersonal($_REQUEST['id']);
+          $formacion_empresa    =  $obj_Persona->getFormacionEmpresa($_REQUEST['id']);
+          $asignacion           = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
+          $cargos               = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
       }
       
       
@@ -272,11 +281,11 @@
                                         </div>
                                         <div class="three columns">
                                             <label>F. Retiro</label>
-                                            <input type="date" class="smoothborder" name="retiro_asigna" id="ingreso_asigna" />
+                                            <input type="date" class="smoothborder" name="retiro_asigna" id="retiro_asigna" />
                                         </div>
                                         <div class="three columns">
                                             <label>Estado</label>
-                                            <input type="checkbox" class="smoothborder" name="estado_asigna" id="estado_asigna" required="" value="<?php echo $asignacion[$i]['estado']; ?>" <?php echo $readonly; ?> <?php echo $checked;?> <?php echo $disabled; ?>/>
+                                            <input type="checkbox" class="smoothborder" name="estado_asigna" id="estado_asigna" value="<?php echo $asignacion[$i]['estado']; ?>" <?php echo $readonly; ?> <?php echo $checked;?> <?php echo $disabled; ?>/>
                                         </div>
                                          <div class="three columns">
                                          </div>
@@ -341,7 +350,7 @@
                                 <div class="row">
                                     <div class="six columns">
                                         <label>Nom. Empresa</label>
-                                        <select class="chosen-select" name="empresa" id="empresa" data-placeholder="Seleccione empresa" multiple required>
+                                        <select class="chosen-select" name="empresa" id="empresa" data-placeholder="Seleccione empresa" multiple required width="100%">
                                             <?php for ($i=0; $i < count($organizaciones); $i++) { ?>
                                                 <option value="<?php echo $organizaciones[$i]['id_organizacion']; ?>"><?php echo $organizaciones[$i]['nombre_empresa']; ?></option>
                                             <?php }?>
@@ -373,7 +382,7 @@
                                     </div>
                                     <div class="three columns">
                                         <label>F. Retiro</label>
-                                        <input type="date" class="smoothborder" name="ingreso" id="ingreso" required="" value="<?php echo $historia_laboral[$i]['fecha_retiro']; ?>" <?php echo $readonly; ?>/>
+                                        <input type="date" class="smoothborder" name="retiro" id="retiro" required="" value="<?php echo $historia_laboral[$i]['fecha_retiro']; ?>" <?php echo $readonly; ?>/>
                                     </div>
                                 </div>                                
                             </p>
@@ -480,7 +489,7 @@
                                 <div class="row">
                                     <div class="six columns">
                                         <label>Nom. Institución</label>
-                                        <input type="text" class="smoothborder" name="text" id="institucion" maxlength="100" required="" value="<?php echo $educacion_formal[$i]['institucion']; ?>" <?php echo $readonly; ?>/>
+                                        <input type="text" class="smoothborder" name="institucion" id="institucion" maxlength="100" required="" value="<?php echo $educacion_formal[$i]['institucion']; ?>" <?php echo $readonly; ?>/>
                                     </div>
                                     <div class="six columns">
                                         <label>Tip. Formación</label>
@@ -517,7 +526,12 @@
                                     <div class="row">
                                         <div class="six columns">
                                             <label>Nom. Institución</label>
-                                            <input type="text" class="smoothborder" name="text" id="institucion" maxlength="100" required="" value="<?php echo $educacion_formal[$i]['institucion']; ?>" <?php echo $readonly; ?>/>
+                                            
+                                            <select class="chosen-select" name="institucion" id="institucion" data-placeholder="Seleccione Institución" multiple required>
+                                                <?php for ($i=0; $i < count($organizaciones); $i++) { ?>
+                                                    <option value="<?php echo $organizaciones[$i]['id_organizacion']; ?>"><?php echo $organizaciones[$i]['nombre_empresa']; ?></option>
+                                                <?php }?>
+                                            </select> 
                                         </div>
                                         <div class="six columns">
                                             <label>Tip. Formación</label>
