@@ -86,7 +86,7 @@
           $historia_laboral     = $obj_Persona->getHistoriaLab($_REQUEST['id']);
           $educacion_formal     = $obj_Persona->getEduFormal($_REQUEST['id']);
           $referencia_personal  = $obj_Persona->getReferenciaPersonal($_REQUEST['id']);
-          $formacion_empresa    =  $obj_Persona->getFormacionEmpresa($_REQUEST['id']);
+          $formacion_empresa    = $obj_Persona->getFormacionEmpresa($_REQUEST['id']);
           $asignacion           = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
           $cargos               = $obj_Asignacion->get_AsignacionByUser($_REQUEST['id']);
       }
@@ -564,12 +564,14 @@
                                 <table class="table table-bordered" style="width: 100%;">                                    
                                     <tr>
                                         <th>Nombre del Curso</th>
+                                        <th>Nota</th>   
                                         <th>Calificación</th>   
                                     </tr>  
                                     <?php for ($i=0; $i < count($formacion_empresa); $i++) :  ?>
                                     <tr>
                                         <td><?php echo $formacion_empresa[$i]['nombre_curso']?></td> 
-                                        <td style="text-align:center"><?php echo (is_null($formacion_empresa[$i]['aprobo_curso']) || $formacion_empresa[$i]['aprobo_curso'] == '' )?'En progreso':null; ?></td> 
+                                        <td style="text-align:center"><?php echo (is_null($formacion_empresa[$i]['aprobado']) || $formacion_empresa[$i]['aprobado'] == '' )?'-':$formacion_empresa[$i]['aprobado']; ?></td> 
+                                        <td style="text-align:center"><?php echo (is_null($formacion_empresa[$i]['aprobado']) || $formacion_empresa[$i]['aprobado'] == '' )?'En progreso':((int)$formacion_empresa[$i]['aprobado'] < 4? 'Reprobó' : 'Aprobó' ); ?></td> 
                                     </tr>
                                     <?php endfor;?>  
                                 </table>

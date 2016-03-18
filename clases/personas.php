@@ -127,7 +127,7 @@ class ClassPersonas extends ClassConexion
         
         $query="SELECT
                 cursos_ofertados.nombre_curso,
-                calificaciones_curso.aprobo_curso
+                matricula_curso_persona.aprobado
                 FROM
                 cursos_ofertados
                 INNER JOIN matricula_curso_persona ON matricula_curso_persona.id_curso = cursos_ofertados.id_curso
