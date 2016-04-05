@@ -310,6 +310,37 @@ class ClassPersonas extends ClassConexion
             return true;
         }
     }
+
+
+    /***
+    * Ejecuta la Sincronización del ID y el USUARIO de los personas que esten en RRHH y se registraron en plataforma virtual
+    * 
+    **/
+
+    function SyncPlataform()
+    {
+        $db = new ClassConexion();
+        
+        $query="UPDATE
+                sialen5_rh.personas as rh
+                INNER JOIN 
+                (SELECT
+                virtual.id,
+                virtual.email,
+                virtual.username
+                FROM
+                sialen5_vtalcan.alc_user AS virtual
+                ) AS X ON X.email = rh.email 
+
+                SET rh.id_plat_virtual = X.id, rh.username = X.username
+
+                WHERE
+                rh.id_plat_virtual IS NULL OR 
+                rh.username IS NULL";
+        $consulta = $db->consulta($query,'INSERT');      
+          
+        return $consulta;
+    }
 }
 
 
